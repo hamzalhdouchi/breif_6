@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,32 +9,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 </head>
+
 <body class="overflow-hidden relative bg-gray-900 text-white">
 
     <img class="absolute w-full h-full object-cover z-0" src="./img/background.png" alt="Background">
-  
-  
+
+
     <div class="relative z-10">
-  
-      <header class="w-screen h-20 bg-black bg-opacity-40 flex justify-between items-center">
-        <div class="ml-11">
-          <img class="w-24" src="/img/LOGO.png" alt="LOGO">
-        </div>
-        <div class="w-48 flex justify-around items-center mr-11">
-          <button
-            class="w-20 h-10 bg-lime-500 rounded-xl text-white hover:border-solid hover:border-4 hover:border-lime-300 hover:bg-transparent hover:text-lime-300">
-            Login
-          </button>
-          <button
-            class="w-20 h-10 hover:bg-lime-500 hover:rounded-xl border-solid border-4 border-lime-300 rounded-xl hover:border-none text-lime-300 hover:text-white">
-            Sign Up
-          </button>
-        </div>
-      </header>
-  
-  
-      <div class="flex justify-around items-center h-[90vh]">
-  
-      </header>
+
+        <header class="w-screen h-20 bg-black bg-opacity-40 flex justify-between items-center">
+            <div class="ml-11">
+                <img class="w-24" src="/img/LOGO.png" alt="LOGO">
+            </div>
+            <div class="w-48 flex justify-around items-center mr-11">
+                <button
+                    class="w-20 h-10 bg-lime-500 rounded-xl text-white hover:border-solid hover:border-4 hover:border-lime-300 hover:bg-transparent hover:text-lime-300">
+                    Login
+                </button>
+                <button
+                    class="w-20 h-10 hover:bg-lime-500 hover:rounded-xl border-solid border-4 border-lime-300 rounded-xl hover:border-none text-lime-300 hover:text-white">
+                    Sign Up
+                </button>
+            </div>
+        </header>
+
+        
+  <div id="alert-box"class="hidden fixed top-5 right-5 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg shadow-lg z-50">
+    <p id="alert-message"></p>
+</div>
+<div id="success-alert"
+    class="hidden fixed top-5 right-5 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-lg z-50">
+    <p id="success-message">Carte ajoutée avec succès !</p>
+</div>
+
+
+        <div class="flex justify-around items-center h-[90vh]">
+
+            </header>
 </body>
+
 </html>
