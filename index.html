@@ -2,349 +2,401 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One Shote</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Football Formation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
 
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .fade-out {
+      animation: fadeOut 0.5s ease forwards;
+      animation: fade-out 0.5s forwards;
+    }
+
+
+    @keyframes fade-out {
+      from {
+        opacity: 1;
+      }
+
+      to {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+    }
+  </style>
 </head>
 
-<body class="overflow-hidden relative bg-gray-900 text-white">
+<body class=" relative bg-gray-900 text-white">
+
+  <div id="alert-box"
+    class="hidden fixed top-5 right-5 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg shadow-lg z-50">
+    <p id="alert-message"></p>
+  </div>
+  <div id="success-alert"
+    class="hidden fixed top-5 right-5 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-lg z-50">
+    <p id="success-message">Carte ajoutée avec succès !</p>
+  </div>
+
 
   <img class="absolute w-full h-full object-cover z-0" src="./img/background.png" alt="Background">
 
-
-    <div class="relative z-10">
-
-        <header class="w-screen h-20 bg-black bg-opacity-40 flex justify-between items-center">
-            <div class="ml-11">
-                <img class="w-24" src="/img/LOGO.png" alt="LOGO">
-            </div>
-            <div class="w-48 flex justify-around items-center mr-11">
-                <button
-                    class="w-20 h-10 bg-lime-500 rounded-xl text-white hover:border-solid hover:border-4 hover:border-lime-300 hover:bg-transparent hover:text-lime-300">
-                    Login
-                </button>
-                <button
-                    class="w-20 h-10 hover:bg-lime-500 hover:rounded-xl border-solid border-4 border-lime-300 rounded-xl hover:border-none text-lime-300 hover:text-white">
-                    Sign Up
-                </button>
-            </div>
-        </header>
-
-        
-  <div id="alert-box"class="hidden fixed top-5 right-5 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg shadow-lg z-50">
-    <p id="alert-message"></p>
-</div>
-<div id="success-alert"
-    class="hidden fixed top-5 right-5 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-lg z-50">
-    <p id="success-message">Carte ajoutée avec succès !</p>
-</div>
-<div id="Modalplayer"
-class=" fixed inset- flex justify-center items-center w-screen min-h-screen bg-black bg-opacity-40 hidden z-40 ">
-<div
-  class="bg-[#242121be] w-[90%] md:w-[80vw] p-6 rounded-lg shadow-lg max-h-[90%] overflow-y-auto bg-[url('/img/background.png')] bg-cover bg-center">
-  <h2 class="text-xl font-bold text-white mb-4">Add/Edit Player</h2>
-  <form  id="playerForm"  action="#" method="get" onsubmit="addPlayer()">
-
-    <div class="mb-4">
-      <label for="playerName" class="block text-sm font-medium text-white mb-2">Name</label>
-      <input type="text" id="playerName"
-        class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
-        placeholder="Enter player name">
-    </div>
-
-    <div class="mb-4">
-      <label for="playerPhoto" class="block text-sm font-medium text-white mb-2">Photo URL</label>
-      <input type="url" id="playerPhoto" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter photo URL">
-    </div>
-
-    <div class="mb-4">
-      <label for="playerPosition" class="block text-sm font-medium text-white mb-2">Position</label>
-      <select id="playerPosition"
-        class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 border-gray-800 text-black">
-        <option value="RW">RW</option>
-        <option value="LW">LW</option>
-        <option value="ST">ST</option>
-        <option value="CM">CM</option>
-        <option value="CB">CB</option>
-        <option value="GK">GK</option>
-      </select>
-    </div>
-
-    <div class="mb-4">
-      <label for="playerClub" class="block text-sm font-medium text-white mb-2">Club</label>
-      <input type="text" id="playerClub"
-        class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
-        placeholder="Enter club name">
-    </div>
-
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
-      <div>
-        <label for="playerRating" class="block text-sm font-medium text-white mb-2">Rating</label>
-        <input type="number" id="playerRating"
-          class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
-          placeholder="Rating" min="0" max="100">
-      </div>
-      <div>
-        <label for="playerPace" class="block text-sm font-medium text-white mb-2">Pace</label>
-        <input type="number" id="playerPace"
-          class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
-          placeholder="Pace" min="0" max="100">
-      </div>
-      <div>
-        <label for="playerShooting" class="block text-sm font-medium text-white mb-2">Shooting</label>
-        <input type="number" id="playerShooting"
-          class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
-          placeholder="Shooting" min="0" max="100">
-      </div>
-      <div>
-        <label for="playerPassing" class="block text-sm font-medium text-white mb-2">Passing</label>
-        <input type="number" id="playerPassing"
-          class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
-          placeholder="Passing" min="0" max="100">
-      </div>
-      <div>
-        <label for="playerDribbling" class="block text-sm font-medium text-white mb-2">Dribbling</label>
-        <input type="number" id="playerDribbling"
-          class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
-          placeholder="Dribbling" min="0" max="100">
-      </div>
-      <div>
-        <label for="playerDefending" class="block text-sm font-medium text-white mb-2">Defending</label>
-        <input type="number" id="playerDefending"
-          class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
-          placeholder="Defending" min="0" max="100">
-      </div>
-      <div>
-        <label for="playerPhysical" class="block text-sm font-medium text-white mb-2">Physical</label>
-        <input type="number" id="playerPhysical"
-          class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
-          placeholder="Physical" min="0" max="100">
-      </div>
-    </div>
-
-
-    <div class="flex justify-end space-x-3">
-      <button onclick="showModalPlayer()"
-        class="px-4 py-2 bg-[#8080805f] text-white rounded-lg hover:bg-[#808080d6]">Cancel</button>
-      <button type="submit" onclick=" showModalPlayer()" class="px-4 py-2 bg-[#80808048] text-white rounded-lg hover:bg-[#808080a5]">Save</button>
-    </div>
-  </form>
-</div>
-</div>
-
-<div id="popup"
-class="absolute z-30 w-screen min-h-screen flex justify-center items-center bg-black bg-opacity-70 hidden">
-<div class="w-[60vw] h-[50vh] bg-white bg-opacity-70 rounded-3xl p-8">
-  <div class="h-10 w-[100%] flex justify-end items-center">
-    <button onclick="showModal()" class="bg-black rounded-3xl text-[2vh] font-bold w-14 h-8 text-white">
-      x
-    </button>
-  </div>
-  <div class="flex gap-7">
+  <div id="Modalplayer"
+    class=" fixed inset- flex justify-center items-center w-screen min-h-screen bg-black bg-opacity-40 hidden z-40 ">
     <div
-    class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
-    <button onclick="showModalPlayer()" class="w-full text-white font-bold h-full text-[3vh]">
-      +
-    </button>
-  </div>
-    <div id="cards" class="flex flex-wrap gap-7">
-      
+      class="bg-[#242121be] w-[90%] md:w-[80vw] p-6 rounded-lg shadow-lg max-h-[90%] overflow-y-auto bg-[url('/img/background.png')] bg-cover bg-center">
+      <h2 class="text-xl font-bold text-white mb-4">Add/Edit Player</h2>
+      <form id="playerForm" action="#" method="get" onsubmit="addPlayer()">
+
+        <div class="mb-4">
+          <label for="playerName" class="block text-sm font-medium text-white mb-2">Name</label>
+          <input type="text" id="playerName"
+            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+            placeholder="Enter player name">
+        </div>
+
+        <div class="mb-4">
+          <label for="playerPhoto" class="block text-sm font-medium text-white mb-2">Photo URL</label>
+          <input type="url" id="playerPhoto"
+            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter photo URL">
+        </div>
+
+        <div class="mb-4">
+          <label for="playerPosition" class="block text-sm font-medium text-white mb-2">Position</label>
+          <select id="playerPosition"
+            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 border-gray-800 text-black">
+            <option value="RW">RW</option>
+            <option value="LW">LW</option>
+            <option value="ST">ST</option>
+            <option value="CM">CM</option>
+            <option value="CB">CB</option>
+            <option value="GK">GK</option>
+          </select>
+        </div>
+
+        <div class="mb-4">
+          <label for="playerClub" class="block text-sm font-medium text-white mb-2">Club</label>
+          <input type="text" id="playerClub"
+            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+            placeholder="Enter club name">
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
+          <div>
+            <label for="playerRating" class="block text-sm font-medium text-white mb-2">Rating</label>
+            <input type="number" id="playerRating"
+              class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+              placeholder="Rating" min="0" max="100">
+          </div>
+          <div>
+            <label for="playerPace" class="block text-sm font-medium text-white mb-2">Pace</label>
+            <input type="number" id="playerPace"
+              class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+              placeholder="Pace" min="0" max="100">
+          </div>
+          <div>
+            <label for="playerShooting" class="block text-sm font-medium text-white mb-2">Shooting</label>
+            <input type="number" id="playerShooting"
+              class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+              placeholder="Shooting" min="0" max="100">
+          </div>
+          <div>
+            <label for="playerPassing" class="block text-sm font-medium text-white mb-2">Passing</label>
+            <input type="number" id="playerPassing"
+              class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+              placeholder="Passing" min="0" max="100">
+          </div>
+          <div>
+            <label for="playerDribbling" class="block text-sm font-medium text-white mb-2">Dribbling</label>
+            <input type="number" id="playerDribbling"
+              class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+              placeholder="Dribbling" min="0" max="100">
+          </div>
+          <div>
+            <label for="playerDefending" class="block text-sm font-medium text-white mb-2">Defending</label>
+            <input type="number" id="playerDefending"
+              class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+              placeholder="Defending" min="0" max="100">
+          </div>
+          <div>
+            <label for="playerPhysical" class="block text-sm font-medium text-white mb-2">Physical</label>
+            <input type="number" id="playerPhysical"
+              class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+              placeholder="Physical" min="0" max="100">
+          </div>
+        </div>
+
+
+        <div class="flex justify-end space-x-3">
+          <button onclick="showModalPlayer()"
+            class="px-4 py-2 bg-[#8080805f] text-white rounded-lg hover:bg-[#808080d6]">Cancel</button>
+          <button type="submit" onclick=" showModalPlayer()"
+            class="px-4 py-2 bg-[#80808048] text-white rounded-lg hover:bg-[#808080a5]">Save</button>
+        </div>
+      </form>
     </div>
   </div>
 
-</div>
-</div>
-<div class="flex justify-around items-center h-[90vh] flex-wrap">
 
-  <div
-    class="lg:h-[80vh] lg:w-[55vw] md:h-[70vh] md:w-[45vw] sm:h-[60vh] sm:w-[35vw]  bg-[url('https://www.futbin.com/design2/img/static/field-bg.svg')] bg-no-repeat bg-center bg-cover rounded-lg relative mt-[6vh]">
+  <div id="popup"
+    class="absolute z-30 w-screen min-h-screen flex justify-center items-center bg-black bg-opacity-70 hidden ">
+    <div class=" w-[60vw] h-[50vh] bg-white bg-opacity-70 rounded-3xl p-8">
+      <div class="h-10 w-[100%] flex justify-end items-center">
+        <button onclick="showModal()" class="bg-black rounded-3xl text-[2vh] font-bold w-14 h-8 text-white">
+          x
+        </button>
+      </div>
+      <div class="flex gap-7 ">
+        <div
+          class="bg-[url('/img/card.png')] bg-cover bg-center min-w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
+          <button onclick="showModalPlayer()" class="w-full text-white font-bold h-full text-[3vh]">
+            +
+          </button>
+        </div>
+        <div id="cards" class="flex gap-7 overflow-hidden">
 
-    <div class="absolute inset-0 grid grid-rows-5 gap-y-4 items-center justify-center">
-      <div class="relative top-[29vh] flex flex-col justify-around h-[88vh]">
-        <div class="flex justify-around gap-y-10 items-center w-[100vh] h-[24vh]">
-          <div class="flex flex-col items-center" id="LW">
-            <div
-              class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
-              <button onclick="showModal('LW')" class="w-full text-white font-bold h-full text-[3vh]">
-                +
-              </button>
-            </div>
-            <div
-              class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl">
-              LW
-            </div>
-          </div>
-
-        
-          <div class="flex flex-col items-center" id="ST">
-            <div
-              class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
-              <button onclick="showModal('ST')" class="w-full text-white font-bold h-full text-[3vh]">
-                +
-              </button>
-            </div>
-            <div
-              class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl">
-              ST
-            </div>
-          </div>
-          <div class="flex flex-col items-center" id="RW">
-            <div
-              class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
-              <button onclick="showModal('RW')" class="w-full text-white font-bold h-full text-[3vh]">
-                +
-              </button>
-            </div>
-            <div
-              class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl">
-              RW
-            </div>
-          </div>
-        </div>
-        <div class="flex justify-evenly items-center">
-          <div class="flex flex-col items-center gap-1" id="CM">
-            <div
-              class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
-              <button onclick="showModal('CM')" class="w-full text-white font-bold h-full text-[3vh]">
-                +
-              </button>
-            </div>
-            <div
-              class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl">
-              CM
-            </div>
-          </div>
-          <div class="flex flex-col items-center gap-1" id="CMD">
-            <div
-              class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
-              <button onclick="showModal('CMD')" class="w-full text-white font-bold h-full text-[3vh]">
-                +
-              </button>
-            </div>
-            <div
-              class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl"
-              value="CM">
-              CM
-            </div>
-            <div
-            class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl"
-            value="CM">
-            CM
-          </div>
-        </div>
-        <div class="flex flex-col items-center gap-1" id="CM2">
-          <div
-            class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
-            <button onclick="showModal('CM2')" class="w-full text-white font-bold h-full text-[3vh]">
-              +
-            </button>
-          </div>
-          <div
-            class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl"
-            value="CM">
-            CM
-          </div>
-        </div>
-        
-        <div class="flex justify-around items-center">
-          <div class="flex flex-col items-center gap-1 " id="LB">
-            <div
-              class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
-              <button onclick="showModal('LB')" class="w-full text-white font-bold h-full text-[3vh]">
-                +
-              </button>
-            </div>
-            <div
-              class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl">
-              LB
-            </div>
-          </div>
-          <div class="flex flex-col items-center gap-1" id="CB">
-            <div
-              class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
-              <button onclick="showModal('CB')" class="w-full text-white font-bold h-full text-[3vh]">
-                +
-              </button>
-            </div>
-            <div
-              class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl">
-              CB
-            </div>
-          </div>
-          <div class="flex flex-col items-center gap-1" id="CB1">
-            <div
-              class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
-              <button onclick="showModal('CB1')" class="w-full text-white font-bold h-full text-[3vh]">
-                +
-              </button>
-            </div>
-            <div
-            class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl">
-            CB
-          </div>
-        </div>
-        <div class="flex flex-col items-center gap-1" id="RB">
-          <div
-            class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
-            <button onclick="showModal('RB')" class="w-full text-white font-bold h-full text-[3vh]">
-              +
-            </button>
-          </div>
-          <div
-            class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl">
-            RB
-          </div>
         </div>
       </div>
 
-      <div class="flex justify-center ">
-        <div class="flex flex-col items-center gap-1  " id="GK">
-          <div
-            class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
-            <button onclick="showModal('GK')" class="w-full text-white font-bold h-full text-[3vh]">
-              +
-            </button>
-          </div>
-          <div
-            class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl"
-            value="GK">
-            GK
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
-</div>
-
-
-<div
-  class="w-[20vw] h-[80vh] bg-black bg-opacity-80 text-white rounded-xl text-center flex flex-col justify-between">
-
-  <div class="h-12 flex items-center justify-center font-bold border-b-[1px] border-solid border-white">
-    <h3>Reserve Team</h3>
-  </div>
-  <div id="container overflow-y-auto">
 
   </div>
   </div>
 
-  <!-- <div class="h-12 flex items-center justify-center font-bold border-t-[1px] border-solid border-white">
+  <div class="relative z-10 ">
+
+    <header class="w-auto h-20 bg-black bg-opacity-40 flex justify-between items-center">
+      <div class="ml-11">
+        <img class="w-24" src="/img/LOGO.png" alt="LOGO">
+      </div>
+      <div class="w-48 flex justify-around items-center mr-11">
+        <button
+          class="w-20 h-10 bg-lime-500 rounded-xl text-white hover:border-solid hover:border-4 hover:border-lime-300 hover:bg-transparent hover:text-lime-300">
+          Login
+        </button>
+        <button
+          class="w-20 h-10 hover:bg-lime-500 hover:rounded-xl border-solid border-4 border-lime-300 rounded-xl hover:border-none text-lime-300 hover:text-white">
+          Sign Up
+        </button>
+      </div>
+    </header>
+
+
+    <div class="flex justify-around items-center h-[90vh]" style="flex-wrap: wrap;">
+
+      <div
+        class="h-[80vh] w-[55vw]   bg-[url('https://www.futbin.com/design2/img/static/field-bg.svg')] bg-no-repeat bg-center bg-cover rounded-lg relative mt-[6vh]">
+
+        <div class="absolute inset-0 grid grid-rows-5 gap-y-4 items-center justify-center">
+          <div class="relative top-[29vh] flex flex-col justify-around h-[88vh]">
+            <div class="flex justify-around gap-y-10 items-center w-[100vh] h-[24vh]">
+              <div class="flex flex-col items-center" id="LW">
+                <div
+                  class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
+                  <button onclick="showModal('LW')" class="w-full text-white font-bold h-full text-[3vh]">
+                    +
+                  </button>
+                </div>
+                <div
+                  class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl">
+                  LW
+                </div>
+              </div>
+
+              <div class="flex flex-col items-center" id="ST">
+                <div
+                  class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
+                  <button onclick="showModal('ST')" class="w-full text-white font-bold h-full text-[3vh]">
+                    +
+                  </button>
+                </div>
+                <div
+                  class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl">
+                  ST
+                </div>
+              </div>
+
+              <div class="flex flex-col items-center" id="RW">
+                <div
+                  class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
+                  <button onclick="showModal('RW')" class="w-full text-white font-bold h-full text-[3vh]">
+                    +
+                  </button>
+                </div>
+                <div
+                  class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl">
+                  RW
+                </div>
+              </div>
+            </div>
+
+
+            <div class="flex justify-evenly items-center">
+              <div class="flex flex-col items-center gap-1" id="CM">
+                <div
+                  class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
+                  <button onclick="showModal('CM')" class="w-full text-white font-bold h-full text-[3vh]">
+                    +
+                  </button>
+                </div>
+                <div
+                  class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl">
+                  CM
+                </div>
+              </div>
+              <div class="flex flex-col items-center gap-1" id="CMD">
+                <div
+                  class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
+                  <button onclick="showModal('CMD')" class="w-full text-white font-bold h-full text-[3vh]">
+                    +
+                  </button>
+                </div>
+                <div
+                  class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl"
+                  value="CM">
+                  CM
+                </div>
+              </div>
+              <div class="flex flex-col items-center gap-1" id="CM2">
+                <div
+                  class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
+                  <button onclick="showModal('CM2')" class="w-full text-white font-bold h-full text-[3vh]">
+                    +
+                  </button>
+                </div>
+                <div
+                  class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl"
+                  value="CM">
+                  CM
+                </div>
+              </div>
+            </div>
+
+            <div class="flex justify-around items-center">
+              <div class="flex flex-col items-center gap-1 " id="LB">
+                <div
+                  class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
+                  <button onclick="showModal('LB')" class="w-full text-white font-bold h-full text-[3vh]">
+                    +
+                  </button>
+                </div>
+                <div
+                  class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl">
+                  LB
+                </div>
+              </div>
+              <div class="flex flex-col items-center gap-1" id="CB">
+                <div
+                  class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
+                  <button onclick="showModal('CB')" class="w-full text-white font-bold h-full text-[3vh]">
+                    +
+                  </button>
+                </div>
+                <div
+                  class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl">
+                  CB
+                </div>
+              </div>
+              <div class="flex flex-col items-center gap-1" id="CB1">
+                <div
+                  class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
+                  <button onclick="showModal('CB1')" class="w-full text-white font-bold h-full text-[3vh]">
+                    +
+                  </button>
+                </div>
+                <div
+                  class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl">
+                  CB
+                </div>
+              </div>
+              <div class="flex flex-col items-center gap-1" id="RB">
+                <div
+                  class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
+                  <button onclick="showModal('RB')" class="w-full text-white font-bold h-full text-[3vh]">
+                    +
+                  </button>
+                </div>
+                <div
+                  class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl">
+                  RB
+                </div>
+              </div>
+            </div>
+
+
+            <div class="flex justify-center ">
+              <div class="flex flex-col items-center gap-1  " id="GK">
+                <div
+                  class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
+                  <button onclick="showModal('GK')" class="w-full text-white font-bold h-full text-[3vh]">
+                    +
+                  </button>
+                </div>
+                <div
+                  class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl"
+                  value="GK">
+                  GK
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div
+        class="w-[20vw] h-[80vh] bg-black bg-opacity-80 text-white rounded-xl text-center flex flex-col justify-between">
+
+        <div class="h-12 flex items-center justify-center font-bold border-b-[1px] border-solid border-white">
+          <h3>Reserve Team</h3>
+        </div>
+        <div id="container ">
+
+        </div>
+        </div>
+
+
+        <!-- <div class="h-12 flex items-center justify-center font-bold border-t-[1px] border-solid border-white">
           <button class="w-full h-full hover:bg-blue-700 text-white font-bold rounded-b-lg">
             + Add Player
           </button>
-          </div>-->
+        </div>-->
       </div>
     </div>
   </div>
-  <div id="container">
-
-</div>
-<script src="./tailwind.js"></script>
-<script src="Foot.js"></script>
+  <script src="./tailwind.js"></script>
+  <script src="Foot.js"></script>
 </body>
 
 </html>
