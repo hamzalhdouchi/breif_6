@@ -427,3 +427,22 @@ function AjouterPlayer(playerName, selected, post) {
                     }, 500);
                 }, 3000)
             };
+
+            function RemplacePlayer(post, playerName) {
+
+
+                PlayerPost = post.slice(0, -1);
+            
+                //player list str
+                let element = document.getElementById(post);
+                //player match st
+                let element2 = document.getElementById(PlayerPost);
+                let playerName2Text = document.getElementById(PlayerPost).querySelector('h3').textContent;
+            
+            
+                console.log("player post :", PlayerPost);
+                console.log("post  :", post);
+            
+                element.setAttribute("id", PlayerPost);
+                element2.setAttribute("id", post);
+            
