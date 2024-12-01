@@ -169,4 +169,25 @@ function showModal(post) {
             <p class=" text-gray-300 font-medium text-[8px]">${player.club}</p>
         </div>
         <div class=">
+         </div>
+        </div>
+                    <div class="absolute w-28 h-36 z-30 text-white flex justify-center items-center w-full flex justify-center">
+                    <button onclick="AjouterPlayer('${player.name}', '${player.position}','${post}')" class="w-full h-full flex justify-center"> <img class="h-[8vh] rounded-b-full pb-1" src="${player.photo}" alt=""></button>
+                    </div>
+        <div class=" from-transparent  rounded-b-xl text-white flex justify-center">
+            <div class="flex gap-2 justify-around font-semibold w-28 h-10 text-[7px] mb-10">
+            <div class="text-left">
+                <p> ${player.pace}PAC</p>
+                <p> ${player.shooting}SHO</p>
+                <p> ${player.passing}PAC</p>
+            </div>
+            <div class="text-right">
+                <p> ${player.dribbling}DRI</p>
+                <p> ${player.defending}DEF</p>
+                <p> ${player.physical}PHY</p>
+            </div>
+            </div>
+        </div>
+        </div> 
+                    `;
 }   
