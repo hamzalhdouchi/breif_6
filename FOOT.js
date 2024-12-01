@@ -389,3 +389,10 @@ function AjouterPlayer(playerName, selected, post) {
   </div>
   
                         `;
+                    }
+                }
+            
+                modal.classList.toggle("hidden");
+            
+            
+            }
