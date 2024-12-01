@@ -400,4 +400,29 @@ function AjouterPlayer(playerName, selected, post) {
             function showModalPlayer() {
                 modalPlayer.classList.toggle("hidden");
             }
+            function suprim(playerName, post) {
+                let posistion = document.getElementById(post);
+                posistion.innerHTML = `
+                <div
+                class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
+                <button onclick="showModal('${post}')" class="w-full text-white font-bold h-full text-[3vh]">
+                  +
+                </button>
+              </div>
+              <div
+                class="bg-black w-10 h-5 text-white flex justify-center items-center font-bold bg-opacity-80 rounded-3xl"
+                value="${post}">
+                ${post}
+              </div>`;
+                const data = localStorage.getItem("players");
+                let arrayData = [];
+                if (data) {
+                    arrayData = JSON.parse(data);
+                }
             
+            
+                arrayData = arrayData.filter(players => players.name !== playerName);
+                console.log(arrayData);
+                localStorage.setItem("players", JSON.stringify(arrayData));
+            
+            }
