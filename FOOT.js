@@ -359,3 +359,15 @@ function AjouterPlayer(playerName, selected, post) {
                 <h3 class="text-white font-bold md:text-[10px] text-[6px] mt-1">${player.name}</h3>
                 <p class="text-gray-300 font-medium md:text-[8px] text-[5px]">${player.club}</p>
               </div>
+
+               <div class="w-full flex justify-center">
+        <img class="lg:h-[8vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt="">
+      </div>
+      <div id="btn" class="absolute w-[7vw] rounded-3xl h-[18vh] bg-opacity-90 bg-black z-50 text-white flex justify-center items-center flex-col justify-around  opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+        <button onclick="showModal('${post}')" class="border-[1px] rounded-xl border-white border-solid w-10 h-8">
+          <i class="fa-solid fa-rotate"></i>
+        </button>
+        <button onclick="suprim('${player.name}','${post}')" class="border-[1px] rounded-xl border-white border-solid w-10 h-8">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </div>
