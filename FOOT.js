@@ -155,4 +155,18 @@ function showModal(post) {
     modal.classList.toggle("hidden");
     const storedPlayers = localStorage.getItem("players");
     let arryPlayer = JSON.parse(storedPlayers) || [];
-}
+    let feltredArry = arryPlayer.filter(player => player.position == post);
+    cardsContainer.innerHTML = '';
+
+    if (post == 'GK' || post == 'RB' || post == 'CBR' || post == 'CBL' || post == 'LB' || post == 'CM' || post == 'CMD' || post == 'CM2' || post == 'RW' || post == 'ST' || post == 'LW') {
+        feltredArry.forEach(player => {
+            const playerCard = document.createElement('div');
+            playerCard.classList.add('bg-[url(\'/img/card.png\')]', 'bg-cover', 'bg-center', 'min-w-[120px]', 'h-[20vh]', 'h-20', 'rounded-xl', 'shadow-xl', 'flex', 'flex-col', 'justify-around');
+
+            playerCard.innerHTML = `<div class="text-center mt-">
+            <span class="block font-extrabold text-white mt-2 text-[10px]">${player.rating}</span>
+            <h3 class="text-white font-bold text-[10px] mt-1">${player.name}</h3>
+            <p class=" text-gray-300 font-medium text-[8px]">${player.club}</p>
+        </div>
+        <div class=">
+}   
