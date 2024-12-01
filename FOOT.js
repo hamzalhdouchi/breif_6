@@ -222,6 +222,37 @@ function showModal(post) {
         
                     }
                     cardsContainer.appendChild(playerCard);
-        
                 });
+            } else {
+                arryPlayer.forEach(player => {
+                    const playerCard = document.createElement('div');
+                    playerCard.classList.add('bg-[url(\'/img/card.png\')]', 'bg-cover', 'bg-center', 'min-w-[7vw]', 'h-[20vh]', 'rounded-xl', 'shadow-xl', 'flex', 'flex-col', 'justify-around');
+        
+                    playerCard.innerHTML = `
+                <div class="text-center mt-">
+                    <span class="block font-extrabold text-white mt-2 text-[10px]">${player.rating}</span>
+                    <h3 class="text-white font-bold text-[10px] mt-1">${player.name}</h3>
+                    <p class=" text-gray-300 font-medium text-[8px]">${player.club}</p>
+                </div>
+        
+                </div>
+                            <div class=" w-28 h-[7vh] z-30 text-white flex justify-center items-center">
+                            <button onclick="AjouterPlayer('${player.name}', '${player.position}R','${post}')" class="h-full w-[7vw] w-full flex justify-center"><img class="h-[7vh] rounded-b-full pb-1" src="${player.photo}" alt=""></button>
+                            </div>
+                <div class=" from-transparent  rounded-b-xl text-white flex justify-center">
+                    <div class="flex gap-2 justify-around font-semibold w-28 h-10 text-[9px] mb-10">
+                    <div class="text-left">
+                        <p> ${player.pace}PAC</p>
+                        <p> ${player.shooting}SHO</p>
+                        <p> ${player.passing}PAC</p>
+                    </div>
+                    <div class="text-right">
+                        <p> ${player.dribbling}DRI</p>
+                        <p> ${player.defending}DEF</p>
+                        <p> ${player.physical}PHY</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                            `;
 }   
