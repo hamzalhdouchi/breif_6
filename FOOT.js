@@ -150,7 +150,7 @@ function showModal(post) {
     if (post == 'GK' || post == 'RB' || post == 'CBR' || post == 'CBL' || post == 'LB' || post == 'CM' || post == 'CMD' || post == 'CM2' || post == 'RW' || post == 'ST' || post == 'LW') {
         feltredArry.forEach(player => {
             const playerCard = document.createElement('div');
-            playerCard.classList.add('bg-[url(\'/img/card.png\')]', 'bg-cover', 'bg-center', 'min-w-[120px]', 'h-[20vh]', 'h-20', 'rounded-xl', 'shadow-xl', 'flex', 'flex-col', 'justify-around');
+            playerCard.classList.add('bg-[url(\'./img/card.png\')]', 'bg-cover', 'bg-center', 'min-w-[120px]', 'h-[20vh]', 'h-20', 'rounded-xl', 'shadow-xl', 'flex', 'flex-col', 'justify-around');
 
             playerCard.innerHTML = `<div class="text-center mt-">
             <span class="block font-extrabold text-white mt-2 text-[10px]">${player.rating}</span>
@@ -162,7 +162,7 @@ function showModal(post) {
         </div>
         </div>
                     <div class="absolute w-28 h-36 z-30 text-white flex justify-center items-center w-full flex justify-center">
-                    <button onclick="AjouterPlayer('${player.name}', '${player.position}','${post}')" class="w-full h-full flex justify-center"> <img class="h-[8vh] rounded-b-full pb-1" src="./${player.photo}" alt=""></button>
+                    <button onclick="AjouterPlayer('${player.name}', '${player.position}','${post}')" class="w-full h-full flex justify-center"> <img class="h-[8vh] rounded-b-full pb-1" src="${player.photo}" alt=""></button>
                     </div>
         <div class=" from-transparent  rounded-b-xl text-white flex justify-center">
             <div class="flex gap-2 justify-around font-semibold w-28 h-10 text-[7px] mb-10">
@@ -180,7 +180,7 @@ function showModal(post) {
         </div>
         </div> 
                     `;
-            if (post === "GK") {
+            if (post === "GK" || post === "GKR") {
                 playerCard.innerHTML = `
                     <div class="text-center mt-">
                         <span class="block font-extrabold text-white mt-2 text-[10px]">${player.rating}</span>
@@ -188,7 +188,7 @@ function showModal(post) {
                         <p class=" text-gray-300 font-medium text-[8px]">${player.club}</p>
                     </div>
                     <div class="w-full flex justify-center">
-                        <img class="h-[8vh] rounded-b-full pb-1" src="./${player.photo}" alt="">
+                        <img class="h-[8vh] rounded-b-full pb-1" src="${player.photo}" alt="">
                     </div>
                     <div class="absolute w-28 h-36 z-30 text-white flex justify-center items-center">
                     <button onclick="AjouterPlayer('${player.name}', '${player.position}','${post}')" class="w-full h-full"></button>
@@ -228,7 +228,7 @@ function showModal(post) {
 
         </div>
                     <div class=" w-28 h-[7vh] z-30 text-white flex justify-center items-center">
-                    <button onclick="AjouterPlayer('${player.name}', '${player.position}R','${post}')" class="h-full w-[7vw] w-full flex justify-center"><img class="h-[7vh] rounded-b-full pb-1" src="./${player.photo}" alt=""></button>
+                    <button onclick="AjouterPlayer('${player.name}', '${player.position}R','${post}')" class="h-full w-[7vw] w-full flex justify-center"><img class="h-[7vh] rounded-b-full pb-1" src="${player.photo}" alt=""></button>
                     </div>
         <div class=" from-transparent  rounded-b-xl text-white flex justify-center">
             <div class="flex gap-2 justify-around font-semibold w-28 h-10 text-[9px] mb-10">
@@ -254,7 +254,7 @@ function showModal(post) {
                         <p class=" text-gray-300 font-medium text-[8px]">${player.club}</p>
                     </div>
                     <div class="w-full flex justify-center">
-                        <img class="h-[8vh] rounded-b-full pb-1" src="./${player.photo}" alt="">
+                        <img class="h-[8vh] rounded-b-full pb-1" src="${player.photo}" alt="">
                     </div>
                     <div class="absolute w-28 h-36 z-30 text-white flex justify-center items-center">
                     <button onclick="AjouterPlayer('${player.name}', '${player.position}','${post}')" class="w-full h-full"></button>
@@ -304,14 +304,14 @@ function AjouterPlayer(playerName, selected, post) {
     if (cardElement) {
         cardElement.innerHTML = `
               <div class="flex flex-col items-center gap-1">
-    <div class="relative bg-[url('/img/card.png')] bg-cover bg-center lg:w-[7vw] lg:h-[20vh] md:w-20 md:h-28 h-20 w-16 rounded-xl shadow-xl flex flex-col justify-around group">
+    <div class="relative bg-[url('./img/card.png')] bg-cover bg-center lg:w-[7vw] lg:h-[20vh] md:w-20 md:h-28 h-20 w-16 rounded-xl shadow-xl flex flex-col justify-around group">
       <div class="text-center mt-">
         <span class="block font-extrabold text-white mt-2 lg:text-[10px] md:text-[8px] text-[6px]">${player.rating}</span>
         <h3 class="text-white font-bold md:text-[10px] text-[6px]  mt-1">${player.name}</h3>
         <p class="text-gray-300 font-medium md:text-[8px] text-[5px] ">${player.club}</p>
       </div>
       <div class="w-full flex justify-center">
-        <img class=" lg:h-[8vh] h-[3vh] rounded-b-full pb-1" src="./${player.photo}" alt="">
+        <img class=" lg:h-[8vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt="">
       </div>
       <div id="btn" class="absolute lg:w-[7vw] lg:h-[17vh] md:w-18 md:h-24 h-20 w-16 rounded-3xl bg-opacity-90 bg-black z-50 text-white flex justify-center items-center flex-col justify-around  opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
         <button onclick="showModal('${post}')" class="border-[1px] rounded-xl border-white border-solid lg:w-10 lg:h-8 md:h-9 md:w-7 w-5 h-4">
@@ -342,17 +342,17 @@ function AjouterPlayer(playerName, selected, post) {
   </div>
   
                 `;
-        if (post === "GK") {
+        if (post === "GK" || post === "GKR") {
             cardElement.innerHTML = `
                   <div class="flex flex-col items-center gap-1">
-    <div class="relative bg-[url('/img/card.png')] bg-cover bg-center lg:w-[7vw] lg:h-[20vh] md:w-20 md:h-28 h-20 w-16 rounded-xl shadow-xl flex flex-col justify-around group">
+    <div class="relative bg-[url('./img/card.png')] bg-cover bg-center lg:w-[7vw] lg:h-[20vh] md:w-20 md:h-28 h-20 w-16 rounded-xl shadow-xl flex flex-col justify-around group">
       <div class="text-center mt-">
         <span class="block font-extrabold text-white mt-2 lg:text-[10px] md:text-[8px] text-[6px]">${player.rating}</span>
         <h3 class="text-white font-bold md:text-[10px] text-[6px] mt-1">${player.name}</h3>
         <p class="text-gray-300 font-medium md:text-[8px] text-[5px]">${player.club}</p>
       </div>
       <div class="w-full flex justify-center">
-        <img class="lg:h-[8vh] h-[3vh] rounded-b-full pb-1" src="./${player.photo}" alt="">
+        <img class="lg:h-[8vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt="">
       </div>
       <div id="btn" class="absolute w-[7vw] rounded-3xl h-[18vh] bg-opacity-90 bg-black z-50 text-white flex justify-center items-center flex-col justify-around  opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
         <button onclick="showModal('${post}')" class="border-[1px] rounded-xl border-white border-solid w-10 h-8">
@@ -398,7 +398,7 @@ function suprim(playerName, post) {
     let posistion = document.getElementById(post);
     posistion.innerHTML = `
     <div
-    class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
+    class="bg-[url('./img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
     <button onclick="showModal('${post}')" class="w-full text-white font-bold h-full text-[3vh]">
       +
     </button>
