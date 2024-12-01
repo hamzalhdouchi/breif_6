@@ -332,3 +332,21 @@ function AjouterPlayer(playerName, selected, post) {
           <i class="fa-solid fa-trash"></i>
         </button>
       </div>
+       <div class="from-transparent rounded-b-xl text-white flex justify-center">
+        <div class="flex gap-2 justify-around font-semibold w-20 h-10 lg:text-[7px] hover:text-[7px] text-[4px] mb-10">
+          <div class="text-left">
+            <p id="pace">${player.pace}PAC</p>
+            <p>${player.shooting}SHO</p>
+            <p>${player.passing}PAC</p>
+          </div>
+          <div class="text-right">
+            <p>${player.dribbling}DRI</p>
+            <p>${player.defending}DEF</p>
+            <p>${player.physical}PHY</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+                `;
