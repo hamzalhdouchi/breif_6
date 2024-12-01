@@ -448,46 +448,7 @@ function showAlert(message) {
     alert(message);
 }
 
-// function remplacement() {
-//     let pla = document.getElementById("container");
-//     const storedPlayers = localStorage.getItem("players");
-//     let arryPlayer = JSON.parse(storedPlayers) || [];
 
-//     arryPlayer.forEach(player=> {
-//         pla.innerHTML += `
-
-//       <div
-//         class="bg-[url('/img/card.png')] bg-cover bg-center w-[6vw] h-[140px] rounded-xl shadow-xl flex flex-col justify-around">
-//         <div class="text-center mt-">
-//             <span class="block font-extrabold text-white mt-2 text-[10px]">${player.rating}</span>
-//             <h3 class="text-white font-bold text-[10px] mt-1">${player.name}</h3>
-//             <p class=" text-gray-300 font-medium text-[8px]">${player.club}</p>
-//         </div>
-//         <div class="w-full flex justify-center">
-//             <img class="h-[8vh] rounded-b-full pb-1" src="${player.photo}" alt="">
-//         </div>
-//         </div>
-
-//         <div class=" from-transparent  rounded-b-xl text-white flex justify-center">
-//             <div class="flex gap-2 justify-around font-semibold w-28 h-10 text-[7px] mb-10">
-//             <div class="text-left">
-//                 <p> ${player.pace}PAC</p>
-//                 <p> ${player.shooting}SHO</p>
-//                 <p> ${player.passing}PAC</p>
-//             </div>
-//             <div class="text-right">
-//                 <p> ${player.dribbling}DRI</p>
-//                 <p> ${player.defending}DEF</p>
-//                 <p> ${player.physical}PHY</p>
-//             </div>
-//             </div>
-//         </div>
-//         </div> 
-//         </div>
-//         ` 
-//     })
-// }
-// remplacement();
 
 
 function RemplacePlayer(post, playerName) {
