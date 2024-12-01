@@ -18,6 +18,28 @@ cardsContainer.addEventListener("wheel", (e) => {
     cardsContainer.scrollLeft += e.deltaX
 })
 
+let arry = []
+
+function fetchData() {
+
+    fetch('./Player.json')
+        .then(response => response.json())
+        .then(data => {
+            const cards = data.players;
+
+            arry = cards
+            console.log("vdfjhdvdhjvdvbjs", arry);
+            if (arry.length >= 0) {
+                localStorage.setItem("players", JSON.stringify(arry));
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        })
+}
+fetchData();
+
+
 function addPlayer() {
     if (!rigex()) {
         return;
