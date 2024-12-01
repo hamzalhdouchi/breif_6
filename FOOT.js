@@ -255,4 +255,34 @@ function showModal(post) {
                 </div>
                 </div>
                             `;
+                            if (post === "GK") {
+                                playerCard.innerHTML = `
+                                    <div class="text-center mt-">
+                                        <span class="block font-extrabold text-white mt-2 text-[10px]">${player.rating}</span>
+                                        <h3 class="text-white font-bold text-[10px] mt-1">${player.name}</h3>
+                                        <p class=" text-gray-300 font-medium text-[8px]">${player.club}</p>
+                                    </div>
+                                    <div class="w-full flex justify-center">
+                                        <img class="h-[8vh] rounded-b-full pb-1" src="${player.photo}" alt="">
+                                    </div>
+                                    <div class="absolute w-28 h-36 z-30 text-white flex justify-center items-center">
+                                    <button onclick="AjouterPlayer('${player.name}', '${player.position}','${post}')" class="w-full h-full"></button>
+                                    </div>
+                                    <div class=" from-transparent  rounded-b-xl text-white flex justify-center">
+                                        <div class="flex gap-2 justify-around font-semibold w-20 h-10 text-[8px] mb-10">
+                                        <div class="text-left">
+                                            <p> ${player.diving}DIV</p>
+                                            <p> ${player.handling}HND</p>
+                                            <p> ${player.kicking}KCK</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p> ${player.reflexes}RFX</p>
+                                            <p> ${player.speed}SPD</p>
+                                            <p> ${player.positioning}POS</p>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                  
+                                                `;
 }   
