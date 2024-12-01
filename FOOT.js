@@ -14,6 +14,9 @@ let dribbling = document.getElementById("playerDribbling");
 let Defending = document.getElementById("playerDefending");
 let Physical = document.getElementById("playerPhysical");
 
+cardsContainer.addEventListener("wheel", (e) => {
+    cardsContainer.scrollLeft += e.deltaX
+})
 
 function addPlayer() {
     if (!rigex()) {
