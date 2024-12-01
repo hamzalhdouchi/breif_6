@@ -445,4 +445,8 @@ function AjouterPlayer(playerName, selected, post) {
             
                 element.setAttribute("id", PlayerPost);
                 element2.setAttribute("id", post);
+                AjouterPlayer(playerName, post, post);
+
+                AjouterPlayer(playerName2Text, PlayerPost, PlayerPost);
             
+            }
