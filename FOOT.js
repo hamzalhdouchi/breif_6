@@ -95,3 +95,24 @@ function addPlayer() {
 
     clearInput();
 }
+
+function changer_lesstats(position) {
+
+    if (position === "GK") {
+      let ratin = document.getElementsByClassName("pace")[0].innerText = "rating"
+      document.getElementsByClassName("shooting")[0].innerText = "diving"
+      document.getElementsByClassName("passing")[0].innerText = "handling"
+      document.getElementsByClassName("dribbling")[0].innerText = "kicking"
+      document.getElementsByClassName("defending")[0].innerText = "reflexes"
+      document.getElementsByClassName("physical")[0].innerText = "speed"
+  
+    } else {
+      document.getElementsByClassName("pace")[0].innerText = "pace"
+      document.getElementsByClassName("shooting")[0].innerText = "shooting"
+      document.getElementsByClassName("passing")[0].innerText = "passing"
+      document.getElementsByClassName("dribbling")[0].innerText = "dribbling"
+      document.getElementsByClassName("defending")[0].innerText = "defending"
+      document.getElementsByClassName("physical")[0].innerText = "physical"
+    }
+  
+  }
