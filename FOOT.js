@@ -99,25 +99,25 @@ function addPlayer() {
 function changer_lesstats(position) {
 
     if (position === "GK") {
-      let ratin = document.getElementsByClassName("pace")[0].innerText = "rating"
-      document.getElementsByClassName("shooting")[0].innerText = "diving"
-      document.getElementsByClassName("passing")[0].innerText = "handling"
-      document.getElementsByClassName("dribbling")[0].innerText = "kicking"
-      document.getElementsByClassName("defending")[0].innerText = "reflexes"
-      document.getElementsByClassName("physical")[0].innerText = "speed"
-  
-    } else {
-      document.getElementsByClassName("pace")[0].innerText = "pace"
-      document.getElementsByClassName("shooting")[0].innerText = "shooting"
-      document.getElementsByClassName("passing")[0].innerText = "passing"
-      document.getElementsByClassName("dribbling")[0].innerText = "dribbling"
-      document.getElementsByClassName("defending")[0].innerText = "defending"
-      document.getElementsByClassName("physical")[0].innerText = "physical"
-    }
-  
-  }
+        let ratin = document.getElementsByClassName("pace")[0].innerText = "rating"
+        document.getElementsByClassName("shooting")[0].innerText = "diving"
+        document.getElementsByClassName("passing")[0].innerText = "handling"
+        document.getElementsByClassName("dribbling")[0].innerText = "kicking"
+        document.getElementsByClassName("defending")[0].innerText = "reflexes"
+        document.getElementsByClassName("physical")[0].innerText = "speed"
 
-  function clearInput() {
+    } else {
+        document.getElementsByClassName("pace")[0].innerText = "pace"
+        document.getElementsByClassName("shooting")[0].innerText = "shooting"
+        document.getElementsByClassName("passing")[0].innerText = "passing"
+        document.getElementsByClassName("dribbling")[0].innerText = "dribbling"
+        document.getElementsByClassName("defending")[0].innerText = "defending"
+        document.getElementsByClassName("physical")[0].innerText = "physical"
+    }
+
+}
+
+function clearInput() {
     Name.value = '';
     photo.value = '';
     position.value = '';
@@ -190,8 +190,8 @@ function showModal(post) {
         </div>
         </div> 
                     `;
-                    if (post === "GK") {
-                        playerCard.innerHTML = `
+            if (post === "GK") {
+                playerCard.innerHTML = `
                             <div class="text-center mt-">
                                 <span class="block font-extrabold text-white mt-2 text-[10px]">${player.rating}</span>
                                 <h3 class="text-white font-bold text-[10px] mt-1">${player.name}</h3>
@@ -219,16 +219,16 @@ function showModal(post) {
                             </div>
                             </div>
                                         `;
-        
-                    }
-                    cardsContainer.appendChild(playerCard);
-                });
-            } else {
-                arryPlayer.forEach(player => {
-                    const playerCard = document.createElement('div');
-                    playerCard.classList.add('bg-[url(\'/img/card.png\')]', 'bg-cover', 'bg-center', 'min-w-[7vw]', 'h-[20vh]', 'rounded-xl', 'shadow-xl', 'flex', 'flex-col', 'justify-around');
-        
-                    playerCard.innerHTML = `
+
+            }
+            cardsContainer.appendChild(playerCard);
+        });
+    } else {
+        arryPlayer.forEach(player => {
+            const playerCard = document.createElement('div');
+            playerCard.classList.add('bg-[url(\'/img/card.png\')]', 'bg-cover', 'bg-center', 'min-w-[7vw]', 'h-[20vh]', 'rounded-xl', 'shadow-xl', 'flex', 'flex-col', 'justify-around');
+
+            playerCard.innerHTML = `
                 <div class="text-center mt-">
                     <span class="block font-extrabold text-white mt-2 text-[10px]">${player.rating}</span>
                     <h3 class="text-white font-bold text-[10px] mt-1">${player.name}</h3>
@@ -255,8 +255,8 @@ function showModal(post) {
                 </div>
                 </div>
                             `;
-                            if (post === "GK") {
-                                playerCard.innerHTML = `
+            if (post === "GK") {
+                playerCard.innerHTML = `
                                     <div class="text-center mt-">
                                         <span class="block font-extrabold text-white mt-2 text-[10px]">${player.rating}</span>
                                         <h3 class="text-white font-bold text-[10px] mt-1">${player.name}</h3>
@@ -285,4 +285,12 @@ function showModal(post) {
                                     </div>
                                   
                                                 `;
+
+            }
+            cardsContainer.appendChild(playerCard);
+
+        });
+    }
+
+
 }   
