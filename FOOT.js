@@ -321,3 +321,14 @@ function AjouterPlayer(playerName, selected, post) {
       <div class="w-full flex justify-center">
         <img class=" lg:h-[8vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt="">
       </div>
+        <div id="btn" class="absolute lg:w-[7vw] lg:h-[17vh] md:w-18 md:h-24 h-20 w-16 rounded-3xl bg-opacity-90 bg-black z-50 text-white flex justify-center items-center flex-col justify-around  opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+        <button onclick="showModal('${post}')" class="border-[1px] rounded-xl border-white border-solid lg:w-10 lg:h-8 md:h-9 md:w-7 w-5 h-4">
+          <i class="fa-solid fa-rotate lg:w-10 lg:h-8 md:h-9 md:w-7 w-5 h-4"></i>
+        </button>
+        <button onclick="RemplacePlayer('${post}','${player.name}')" class="border-[1px] rounded-xl border-white border-solid  lg:w-10 lg:h-8 md:h-9 md:w-7 w-5 h-4">
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+        <button onclick="suprim('${player.name}','${post}')" class="border-[1px] rounded-xl border-white border-solid  lg:w-10 lg:h-8 md:h-9 md:w-7 w-5 h-4">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </div>
