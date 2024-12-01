@@ -145,6 +145,6 @@ function showAlert(message) {
 
         setTimeout(() => {
             alertBox.classList.add("hidden");
-        }, 500);
+        },
     }, 3000);
 }
