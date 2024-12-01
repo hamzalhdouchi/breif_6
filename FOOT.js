@@ -39,6 +39,30 @@ function fetchData() {
 }
 fetchData();
 
+function rigex() {
+
+    const NamePattern = /^[a-zA-Z\s]{3,30}$/;
+    const clubPattern = /^[a-zA-Z\s_-]{1,30}$/;
+    const ratingPattern = /^[0-9]{1,2}$/;
+
+    if (!NamePattern.test(Name.value)) {
+        showAlert("Le titre doit être entre 3 et 10 caractères, seulement des lettres.");
+        return false;
+    }
+
+    if (!clubPattern.test(club.value)) {
+        showAlert("La name de club doit être entre 10 et 100 caractères, avec seulement des lettres, chiffres, et ponctuations.");
+        return false;
+    }
+
+    if (!ratingPattern.test(rating.value) || !ratingPattern.test(pace.value) || !ratingPattern.test(shooting.value) || !ratingPattern.test(passing.value) || !ratingPattern.test(dribbling.value) || !ratingPattern.test(Defending.value) || !ratingPattern.test(Physical.value)) {
+        showAlert("Le rating doit être un nombre entre 0 et 99.");
+        return false;
+    }
+    return true;
+}
+
+
 
 function addPlayer() {
     if (!rigex()) {
