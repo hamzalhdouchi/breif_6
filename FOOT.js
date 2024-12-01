@@ -291,6 +291,17 @@ function showModal(post) {
 
         });
     }
-
-
 }   
+
+function AjouterPlayer(playerName, selected, post) {
+
+
+    console.log("test :", playerName, selected, post);
+    const cardElement = document.getElementById(selected);
+
+
+
+    const storedPlayers = localStorage.getItem("players");
+    let arryPlayer = JSON.parse(storedPlayers) || [];
+    const player = arryPlayer.find(player => player.name === playerName);
+    if (!player) {
