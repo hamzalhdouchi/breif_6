@@ -162,7 +162,7 @@ function showModal(post) {
         </div>
         </div>
                     <div class="absolute w-28 h-36 z-30 text-white flex justify-center items-center w-full flex justify-center">
-                    <button onclick="AjouterPlayer('${player.name}', '${player.position}','${post}')" class="w-full h-full flex justify-center"> <img class="h-[8vh] rounded-b-full pb-1" src="${player.photo}" alt=""></button>
+                    <button onclick="AjouterPlayer('${player.name}', '${player.position}','${post}')" class="w-full h-full flex justify-center"> <img class="h-[8vh] rounded-b-full pb-1" src="./${player.photo}" alt=""></button>
                     </div>
         <div class=" from-transparent  rounded-b-xl text-white flex justify-center">
             <div class="flex gap-2 justify-around font-semibold w-28 h-10 text-[7px] mb-10">
@@ -188,7 +188,7 @@ function showModal(post) {
                         <p class=" text-gray-300 font-medium text-[8px]">${player.club}</p>
                     </div>
                     <div class="w-full flex justify-center">
-                        <img class="h-[8vh] rounded-b-full pb-1" src="${player.photo}" alt="">
+                        <img class="h-[8vh] rounded-b-full pb-1" src="./${player.photo}" alt="">
                     </div>
                     <div class="absolute w-28 h-36 z-30 text-white flex justify-center items-center">
                     <button onclick="AjouterPlayer('${player.name}', '${player.position}','${post}')" class="w-full h-full"></button>
@@ -228,7 +228,7 @@ function showModal(post) {
 
         </div>
                     <div class=" w-28 h-[7vh] z-30 text-white flex justify-center items-center">
-                    <button onclick="AjouterPlayer('${player.name}', '${player.position}R','${post}')" class="h-full w-[7vw] w-full flex justify-center"><img class="h-[7vh] rounded-b-full pb-1" src="${player.photo}" alt=""></button>
+                    <button onclick="AjouterPlayer('${player.name}', '${player.position}R','${post}')" class="h-full w-[7vw] w-full flex justify-center"><img class="h-[7vh] rounded-b-full pb-1" src="./${player.photo}" alt=""></button>
                     </div>
         <div class=" from-transparent  rounded-b-xl text-white flex justify-center">
             <div class="flex gap-2 justify-around font-semibold w-28 h-10 text-[9px] mb-10">
@@ -254,7 +254,7 @@ function showModal(post) {
                         <p class=" text-gray-300 font-medium text-[8px]">${player.club}</p>
                     </div>
                     <div class="w-full flex justify-center">
-                        <img class="h-[8vh] rounded-b-full pb-1" src="${player.photo}" alt="">
+                        <img class="h-[8vh] rounded-b-full pb-1" src="./${player.photo}" alt="">
                     </div>
                     <div class="absolute w-28 h-36 z-30 text-white flex justify-center items-center">
                     <button onclick="AjouterPlayer('${player.name}', '${player.position}','${post}')" class="w-full h-full"></button>
@@ -311,7 +311,7 @@ function AjouterPlayer(playerName, selected, post) {
         <p class="text-gray-300 font-medium md:text-[8px] text-[5px] ">${player.club}</p>
       </div>
       <div class="w-full flex justify-center">
-        <img class=" lg:h-[8vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt="">
+        <img class=" lg:h-[8vh] h-[3vh] rounded-b-full pb-1" src="./${player.photo}" alt="">
       </div>
       <div id="btn" class="absolute lg:w-[7vw] lg:h-[17vh] md:w-18 md:h-24 h-20 w-16 rounded-3xl bg-opacity-90 bg-black z-50 text-white flex justify-center items-center flex-col justify-around  opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
         <button onclick="showModal('${post}')" class="border-[1px] rounded-xl border-white border-solid lg:w-10 lg:h-8 md:h-9 md:w-7 w-5 h-4">
@@ -352,7 +352,7 @@ function AjouterPlayer(playerName, selected, post) {
         <p class="text-gray-300 font-medium md:text-[8px] text-[5px]">${player.club}</p>
       </div>
       <div class="w-full flex justify-center">
-        <img class="lg:h-[8vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt="">
+        <img class="lg:h-[8vh] h-[3vh] rounded-b-full pb-1" src="./${player.photo}" alt="">
       </div>
       <div id="btn" class="absolute w-[7vw] rounded-3xl h-[18vh] bg-opacity-90 bg-black z-50 text-white flex justify-center items-center flex-col justify-around  opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
         <button onclick="showModal('${post}')" class="border-[1px] rounded-xl border-white border-solid w-10 h-8">
