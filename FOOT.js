@@ -116,3 +116,17 @@ function changer_lesstats(position) {
     }
   
   }
+
+  function clearInput() {
+    Name.value = '';
+    photo.value = '';
+    position.value = '';
+    club.value = '';
+    rating.value = '';
+    pace.value = '';
+    shooting.value = '';
+    passing.value = '';
+    dribbling.value = '';
+    Defending.value = '';
+    Physical.value = '';
+}
