@@ -396,3 +396,8 @@ function AjouterPlayer(playerName, selected, post) {
             
             
             }
+
+            function showModalPlayer() {
+                modalPlayer.classList.toggle("hidden");
+            }
+            
