@@ -305,3 +305,19 @@ function AjouterPlayer(playerName, selected, post) {
     let arryPlayer = JSON.parse(storedPlayers) || [];
     const player = arryPlayer.find(player => player.name === playerName);
     if (!player) {
+
+        console.error('Player not found');
+        return;
+    }
+    if (cardElement) {
+        cardElement.innerHTML = `
+              <div class="flex flex-col items-center gap-1">
+    <div class="relative bg-[url('/img/card.png')] bg-cover bg-center lg:w-[7vw] lg:h-[20vh] md:w-20 md:h-28 h-20 w-16 rounded-xl shadow-xl flex flex-col justify-around group">
+      <div class="text-center mt-">
+        <span class="block font-extrabold text-white mt-2 lg:text-[10px] md:text-[8px] text-[6px]">${player.rating}</span>
+        <h3 class="text-white font-bold md:text-[10px] text-[6px]  mt-1">${player.name}</h3>
+        <p class="text-gray-300 font-medium md:text-[8px] text-[5px] ">${player.club}</p>
+      </div>
+      <div class="w-full flex justify-center">
+        <img class=" lg:h-[8vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt="">
+      </div>
