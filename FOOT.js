@@ -47,22 +47,35 @@ function rigex() {
     const ratingPattern = /^[0-9]{1,2}$/;
 
     if (!NamePattern.test(Name.value)) {
-        showAlert("Le titre doit être entre 3 et 10 caractères, seulement des lettres.");
+        alert("Le titre doit être entre 3 et 10 caractères, seulement des lettres.");
         return false;
     }
 
     if (!clubPattern.test(club.value)) {
-        showAlert("La name de club doit être entre 10 et 100 caractères, avec seulement des lettres, chiffres, et ponctuations.");
+        alert("La name de club doit être entre 10 et 100 caractères, avec seulement des lettres, chiffres, et ponctuations.");
         return false;
     }
 
     if (!ratingPattern.test(rating.value) || !ratingPattern.test(pace.value) || !ratingPattern.test(shooting.value) || !ratingPattern.test(passing.value) || !ratingPattern.test(dribbling.value) || !ratingPattern.test(Defending.value) || !ratingPattern.test(Physical.value)) {
-        showAlert("Le rating doit être un nombre entre 0 et 99.");
+        alert("Le rating doit être un nombre entre 0 et 99.");
         return false;
     }
     return true;
 }
 
+function clearInput(){
+  Name.value =""
+  photo.value = ""
+  position.value = ""
+  club.value = ""
+  rating.value = ""
+  pace.value = ""
+  shooting.value = ""
+  passing.value = ""
+  dribbling.value = ""
+  Defending.value = ""
+  Physical.value = ""
+}
 
 function addPlayer() {
     if (!rigex()) {
@@ -150,7 +163,7 @@ function showModal(post) {
     if (post == 'GK' || post == 'RB' || post == 'CBR' || post == 'CBL' || post == 'LB' || post == 'CM' || post == 'CMD' || post == 'CM2' || post == 'RW' || post == 'ST' || post == 'LW') {
         feltredArry.forEach(player => {
             const playerCard = document.createElement('div');
-            playerCard.classList.add('bg-[url(\'./img/card.png\')]', 'bg-cover', 'bg-center', 'min-w-[120px]', 'h-[20vh]', 'h-20', 'rounded-xl', 'shadow-xl', 'flex', 'flex-col', 'justify-around');
+            playerCard.classList.add('bg-[url(\'/img/card.png\')]', 'bg-cover', 'bg-center', 'min-w-[120px]', 'h-[20vh]', 'h-20', 'rounded-xl', 'shadow-xl', 'flex', 'flex-col', 'justify-around');
 
             playerCard.innerHTML = `<div class="text-center mt-">
             <span class="block font-extrabold text-white mt-2 text-[10px]">${player.rating}</span>
@@ -180,7 +193,7 @@ function showModal(post) {
         </div>
         </div> 
                     `;
-            if (post === "GK" || post === "GKR") {
+            if (post === "GK") {
                 playerCard.innerHTML = `
                     <div class="text-center mt-">
                         <span class="block font-extrabold text-white mt-2 text-[10px]">${player.rating}</span>
@@ -246,7 +259,7 @@ function showModal(post) {
         </div>
         </div>
                     `;
-            if (post === "GK") {
+            if (post === "GK" || post === "GKR") {
                 playerCard.innerHTML = `
                     <div class="text-center mt-">
                         <span class="block font-extrabold text-white mt-2 text-[10px]">${player.rating}</span>
@@ -304,7 +317,7 @@ function AjouterPlayer(playerName, selected, post) {
     if (cardElement) {
         cardElement.innerHTML = `
               <div class="flex flex-col items-center gap-1">
-    <div class="relative bg-[url('./img/card.png')] bg-cover bg-center lg:w-[7vw] lg:h-[20vh] md:w-20 md:h-28 h-20 w-16 rounded-xl shadow-xl flex flex-col justify-around group">
+    <div class="relative bg-[url('/img/card.png')] bg-cover bg-center lg:w-[7vw] lg:h-[20vh] md:w-20 md:h-28 h-20 w-16 rounded-xl shadow-xl flex flex-col justify-around group">
       <div class="text-center mt-">
         <span class="block font-extrabold text-white mt-2 lg:text-[10px] md:text-[8px] text-[6px]">${player.rating}</span>
         <h3 class="text-white font-bold md:text-[10px] text-[6px]  mt-1">${player.name}</h3>
@@ -342,10 +355,10 @@ function AjouterPlayer(playerName, selected, post) {
   </div>
   
                 `;
-        if (post === "GK" || post === "GKR") {
+        if (post === "GK") {
             cardElement.innerHTML = `
                   <div class="flex flex-col items-center gap-1">
-    <div class="relative bg-[url('./img/card.png')] bg-cover bg-center lg:w-[7vw] lg:h-[20vh] md:w-20 md:h-28 h-20 w-16 rounded-xl shadow-xl flex flex-col justify-around group">
+    <div class="relative bg-[url('/img/card.png')] bg-cover bg-center lg:w-[7vw] lg:h-[20vh] md:w-20 md:h-28 h-20 w-16 rounded-xl shadow-xl flex flex-col justify-around group">
       <div class="text-center mt-">
         <span class="block font-extrabold text-white mt-2 lg:text-[10px] md:text-[8px] text-[6px]">${player.rating}</span>
         <h3 class="text-white font-bold md:text-[10px] text-[6px] mt-1">${player.name}</h3>
@@ -398,7 +411,7 @@ function suprim(playerName, post) {
     let posistion = document.getElementById(post);
     posistion.innerHTML = `
     <div
-    class="bg-[url('./img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
+    class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
     <button onclick="showModal('${post}')" class="w-full text-white font-bold h-full text-[3vh]">
       +
     </button>
@@ -420,35 +433,11 @@ function suprim(playerName, post) {
     localStorage.setItem("players", JSON.stringify(arrayData));
 
 }
-function showAlert(message) {
-    const alertBox = document.getElementById("alert-box");
-    const alertMessage = document.getElementById("alert-message");
-
-    alertMessage.textContent = message;
-    alertBox.classList.remove("hidden", "fade-out");
-    alertBox.classList.add("fade-in");
-
-    setTimeout(() => {
-        alertBox.classList.remove("fade-in");
-        alertBox.classList.add("fade-out");
-
-        setTimeout(() => {
-            alertBox.classList.add("hidden");
-        }, 500);
-    }, 3000)
-};
 
 
-function ajoutPlayer() {
-    const players = JSON.parse(localStorage.getItem("players")) || [];
-    console.log(players);
-}
-
-function showAlert(message) {
-    alert(message);
-}
 
 
+;
 
 
 function RemplacePlayer(post, playerName) {
@@ -468,9 +457,6 @@ function RemplacePlayer(post, playerName) {
 
     element.setAttribute("id", PlayerPost);
     element2.setAttribute("id", post);
-
-
-
     AjouterPlayer(playerName, post, post);
 
     AjouterPlayer(playerName2Text, PlayerPost, PlayerPost);
