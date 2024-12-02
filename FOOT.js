@@ -230,7 +230,7 @@ function showModal(post) {
     } else {
         arryPlayer.forEach(player => {
             const playerCard = document.createElement('div');
-            playerCard.classList.add('bg-[url(\'/img/card.png\')]', 'bg-cover', 'bg-center', 'min-w-[7vw]', 'h-[20vh]', 'rounded-xl', 'shadow-xl', 'flex', 'flex-col', 'justify-around');
+            playerCard.classList.add('bg-[url(\'/img/card.png\')]', 'bg-cover', 'bg-center', 'h-[20vh]', 'rounded-xl', 'shadow-xl', 'flex', 'flex-col', 'justify-between');
 
             playerCard.innerHTML = `
         <div class="text-center mt-">
