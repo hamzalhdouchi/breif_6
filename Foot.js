@@ -127,14 +127,13 @@ function changerForm(position) {
 
 function showModal(post) {
 
-  //afficher les player sur popup
+ 
   modal.classList.toggle("hidden");
 
-  //extract les players localstorage
   const storedPlayers = localStorage.getItem("players");
+
   let arryPlayer = JSON.parse(storedPlayers) || [];
 
-  //filter les playres pour chaque position
   let feltredArry = arryPlayer.filter(player => player.position == post);
 
   //clear popup filter 
@@ -147,14 +146,14 @@ function showModal(post) {
 
       playerCard.innerHTML = `<div class="text-center mt-">
             <span class="block font-extrabold text-white  mt-2 lg:text-[10px] md:text-[8px] text-[6px]">${player.rating}</span>
-            <h3 class="text-white font-bold md:text-[10px] lg:mt-1 text-[6px]">${player.name}</h3>
+            <h3 class="text-white font-bold lg:text-[10px] md:text-[8px] lg:mt-1 text-[6px]">${player.name}</h3>
             <p class=" text-gray-300 font-medium md:text-[8px] text-[5px]">${player.club}</p>
         </div>
         <div class=">         
         </div>
         </div>
                     <div class="absolute w-28 h-36 z-30 text-white flex justify-center items-center w-full flex justify-center">
-                    <button onclick="AjouterPlayer('${player.name}', '${player.position}','${post}')" class="w-full h-full flex justify-center"> <img class="lg:h-[8vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt=""></button>
+                    <button onclick="AjouterPlayer('${player.name}', '${player.position}','${post}')" class="w-full h-full flex justify-center"> <img class="lg:h-[7vh] md:h-[5vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt=""></button>
                     </div>
         <div class=" from-transparent  rounded-b-xl text-white flex justify-center">
             <div class="flex gap-2 justify-around font-semibold w-20 h-10 lg:text-[7px] hover:text-[7px] text-[4px] mb-10">
@@ -207,18 +206,18 @@ function showModal(post) {
   } else {
     arryPlayer.forEach(player => {
       const playerCard = document.createElement('div');
-      playerCard.classList.add('bg-[url(\'/img/card.png\')]', 'bg-cover', 'bg-center', 'lg:h-[20vh]', 'md:w-20', 'md:h-28', 'h-20', 'w-16', 'rounded-xl', 'shadow-xl', 'flex', 'flex-col', 'justify-between');
+      playerCard.classList.add('bg-[url(\'/img/card.png\')]', 'bg-cover', 'bg-center', 'lg:min-w-[7vw]','lg:h-[20vh]', 'md:w-20', 'md:h-28', 'h-20', 'w-16', 'rounded-xl', 'shadow-xl', 'flex', 'flex-col', 'justify-between');
 
       playerCard.innerHTML = `
         <div class="text-center mt-">
             <span class="block font-extrabold text-white mt-2 lg:text-[10px] text-[5px]">${player.rating}</span>
-            <h3 class="text-white font-bold md:text-[10px] lg:mt-1 text-[6px]">${player.name}</h3>
+            <h3 class="text-white font-bold lg:text-[10px] md:text-[8px] lg:mt-1 text-[6px]">${player.name}</h3>
             <p class=" text-gray-300 font-medium md:text-[8px] text-[5px]">${player.club}</p>
         </div>
 
         </div>
-                    <div class=" w-28 h-[7vh] z-30 text-white flex justify-center items-center">
-                    <button onclick="AjouterPlayer('${player.name}', '${player.position}R','${post}')" class="h-full w-[7vw] w-full flex justify-center"><img class="lg:h-[8vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt=""></button>
+                    <div class=" w-28 h-36 z-30 text-white flex justify-center items-center">
+                    <button onclick="AjouterPlayer('${player.name}', '${player.position}R','${post}')" class="h-full w-[7vw] w-full flex justify-center"><img class="lg:h-[7vh] md:h-[5vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt=""></button>
                     </div>
         <div class=" from-transparent  rounded-b-xl text-white flex justify-center">
             <div class="flex gap-2 justify-around font-semibold w-20 h-10 lg:text-[7px] hover:text-[7px] text-[4px] mb-10">
@@ -240,11 +239,11 @@ function showModal(post) {
         playerCard.innerHTML = `
                     <div class="text-center mt-">
                         <span class="block font-extrabold text-white  mt-2 lg:text-[10px] text-[5px]">${player.rating}</span>
-                        <h3 class="text-white font-bold md:text-[10px] lg:mt-1 text-[6px]  ">${player.name}</h3>
+                        <h3 class="text-white font-bold lg:text-[10px] md:text-[8px] lg:mt-1 text-[6px]  ">${player.name}</h3>
                         <p class=" text-gray-300 font-medium md:text-[8px] text-[5px]">${player.club}</p>
                     </div>
                     <div class="w-full flex justify-center">
-                        <img class="lg:h-[8vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt="">
+                        <img class="lg:h-[7vh] md:h-[5vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt="">
                     </div>
                     <div class="absolute w-28 h-36 z-30 text-white flex justify-center items-center">
                     <button onclick="AjouterPlayer('${player.name}', '${player.position}','${post}')" class="w-full h-full"></button>
@@ -293,11 +292,11 @@ function AjouterPlayer(playerName, selected, post) {
     <div class="relative bg-[url('/img/card.png')] bg-cover bg-center lg:w-[7vw] lg:h-[20vh] md:w-20 md:h-28 h-24 w-18 rounded-xl shadow-xl flex flex-col justify-around group">
       <div class="text-center mt-">
         <span class="block font-extrabold text-white mt-2 lg:text-[10px] md:text-[8px] text-[6px]">${player.rating}</span>
-        <h3 class="text-white font-bold md:text-[10px] text-[6px]  mt-1">${player.name}</h3>
+        <h3 class="text-white font-bold lg:text-[10px] md:text-[8px] text-[6px]  mt-1">${player.name}</h3>
         <p class="text-gray-300 font-medium md:text-[8px] text-[5px] ">${player.club}</p>
       </div>
       <div class="w-full flex justify-center">
-        <img class=" lg:h-[8vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt="">
+        <img class=" lg:h-[7vh] md:h-[5vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt="">
       </div>
       <div id="btn" class="absolute lg:w-[7vw] lg:h-[17vh] md:w-18 md:h-24 h-20 w-16 rounded-3xl bg-opacity-90 bg-black z-50 text-white flex justify-center items-center flex-col justify-around  opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
         <button onclick="showModal('${post}')" class="border-[1px] rounded-xl border-white border-solid lg:w-10 lg:h-8 md:h-9 md:w-7 w-5 h-4">
@@ -333,11 +332,11 @@ function AjouterPlayer(playerName, selected, post) {
     <div class="relative bg-[url('/img/card.png')] bg-cover bg-center hover:w-[40px] lg:w-[7vw] lg:h-[20vh] md:w-20 md:h-28 h-20 w-16 rounded-xl shadow-xl flex flex-col justify-around group">
       <div class="text-center mt-">
         <span class="block font-extrabold text-white mt-2 lg:text-[10px] md:text-[8px] text-[6px]">${player.rating}</span>
-        <h3 class="text-white font-bold md:text-[10px] text-[6px] mt-1">${player.name}</h3>
+        <h3 class="text-white font-bold lg:text-[10px] md:text-[8px] text-[6px] mt-1">${player.name}</h3>
         <p class="text-gray-300 font-medium md:text-[8px] text-[5px]">${player.club}</p>
       </div>
       <div class="w-full flex justify-center">
-        <img class="lg:h-[8vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt="">
+        <img class="lg:h-[7vh] md:h-[5vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt="">
       </div>
       <div id="btn" class="absolute w-[7vw] rounded-3xl h-[18vh] bg-opacity-90 bg-black z-50 text-white flex justify-center items-center flex-col justify-around  opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
         <button onclick="showModal('${post}')" class="border-[1px] rounded-xl border-white border-solid w-10 h-8">
