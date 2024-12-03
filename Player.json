@@ -305,22 +305,6 @@
             "physical": 77
         },
         {
-            "name": "Jadon Sancho",
-            "photo": "https://cdn.sofifa.net/players/233/049/25_120.png",
-            "position": "LW",
-            "nationality": "England",
-            "flag": "https://cdn.sofifa.net/flags/gb-eng.png",
-            "club": "Manchester United",
-            "logo": "https://cdn.sofifa.net/meta/team/14/120.png",
-            "rating": 84,
-            "pace": 85,
-            "shooting": 74,
-            "passing": 78,
-            "dribbling": 88,
-            "defending": 34,
-            "physical": 63
-        },
-        {
             "name": "Alexander-Arnold",
             "photo": "https://cdn.sofifa.net/players/231/281/25_120.png",
             "position": "RB",
@@ -350,22 +334,6 @@
             "dribbling": 80,
             "defending": 75,
             "physical": 78
-        },
-        {
-            "name": "Youssef En-Nesyri",
-            "photo": "https://cdn.sofifa.net/players/235/410/25_120.png",
-            "position": "ST",
-            "nationality": "Morocco",
-            "flag": "https://cdn.sofifa.net/flags/ma.png",
-            "club": "Fenerbahçe",
-            "logo": "https://cdn.sofifa.net/meta/team/88/120.png",
-            "rating": 83,
-            "pace": 82,
-            "shooting": 82,
-            "passing": 63,
-            "dribbling": 77,
-            "defending": 36,
-            "physical": 80
         },
         {
             "name": "Noussair Mazraoui",
@@ -416,22 +384,6 @@
             "positioning": 85
         },
         {
-            "name": "Robert Lewandowski",
-            "photo": "https://cdn.sofifa.net/players/188/545/25_120.png",
-            "position": "ST",
-            "nationality": "Poland",
-            "flag": "https://cdn.sofifa.net/flags/pl.png",
-            "club": "Barcelona",
-            "logo": "https://cdn.sofifa.net/meta/team/241/120.png",
-            "rating": 91,
-            "pace": 76,
-            "shooting": 93,
-            "passing": 80,
-            "dribbling": 84,
-            "defending": 41,
-            "physical": 83
-        },
-        {
             "name": "Sadio Mané",
             "photo": "https://cdn.sofifa.net/players/208/722/25_120.png",
             "position": "LW",
@@ -446,38 +398,6 @@
             "dribbling": 89,
             "defending": 50,
             "physical": 78
-        },
-        {
-            "name": "Romelu Lukaku",
-            "photo": "https://cdn.sofifa.net/players/192/505/25_120.png",
-            "position": "ST",
-            "nationality": "Belgium",
-            "flag": "https://cdn.sofifa.net/flags/be.png",
-            "club": "AS Roma",
-            "logo": "https://cdn.sofifa.net/meta/team/100/120.png",
-            "rating": 84,
-            "pace": 78,
-            "shooting": 88,
-            "passing": 72,
-            "dribbling": 75,
-            "defending": 41,
-            "physical": 88
-        },
-        {
-            "name": "Aubameyang",
-            "photo": "https://cdn.sofifa.net/players/188/567/25_120.png",
-            "position": "ST",
-            "nationality": "Gabon",
-            "flag": "https://cdn.sofifa.net/flags/ga.png",
-            "club": "Chelsea",
-            "logo": "https://cdn.sofifa.net/meta/team/10/120.png",
-            "rating": 85,
-            "pace": 89,
-            "shooting": 85,
-            "passing": 75,
-            "dribbling": 80,
-            "defending": 38,
-            "physical": 76
         },
         {
             "name": "Gareth Bale",
@@ -525,22 +445,6 @@
             "passing": 84,
             "dribbling": 88,
             "defending": 42,
-            "physical": 76
-        },
-        {
-            "name": "David Alaba",
-            "photo": "https://cdn.sofifa.net/players/241/486/25_120.png",
-            "position": "CBL",
-            "nationality": "Austria",
-            "flag": "https://cdn.sofifa.net/flags/at.png",
-            "club": "Real Madrid",
-            "logo": "https://cdn.sofifa.net/meta/team/3468/120.png",
-            "rating": 86,
-            "pace": 73,
-            "shooting": 65,
-            "passing": 80,
-            "dribbling": 82,
-            "defending": 84,
             "physical": 76
         },
         {

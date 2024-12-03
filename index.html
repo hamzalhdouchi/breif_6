@@ -6,52 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Football Formation</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <style>
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeOut {
-      0% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      100% {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-    }
-
-    .fade-in {
-      animation: fadeIn 0.5s ease forwards;
-    }
-
-    .fade-out {
-      animation: fadeOut 0.5s ease forwards;
-      animation: fade-out 0.5s forwards;
-    }
-
-
-    @keyframes fade-out {
-      from {
-        opacity: 1;
-      }
-
-      to {
-        opacity: 0;
-        transform: translateX(20px);
-      }
-    }
-  </style>
 </head>
 
 <body class=" relative bg-gray-900 text-white lg:overflow-y-hidden overflow-x-hidden">
@@ -73,7 +27,7 @@
     <div
       class="bg-[#242121be] w-[90%] md:w-[80vw] p-6 rounded-lg shadow-lg max-h-[90%]  bg-[url('/img/background.png')] bg-cover bg-center">
       <h2 class="text-xl font-bold text-white mb-4">Add/Edit Player</h2>
-      <form id="playerForm" action="#" method="get" onsubmit="addPlayer()">
+      <form id="playerForm" action="#" method="get" onsubmit="addPlayer(event)">
 
         <div class="mb-4">
           <label for="playerName" class="block text-sm font-medium text-white mb-2">Name</label>
@@ -168,7 +122,7 @@
 
   <div id="popup"
     class="absolute z-30 w-screen min-h-screen flex justify-center items-center bg-black bg-opacity-70 hidden overflow-hidden ">
-    <div class=" w-[60vw] h-[50vh] bg-white bg-opacity-70 rounded-3xl p-8">
+    <div class="md:w-[60vw] md:h-[50vh] w-[100vw] h-[40vh]   bg-white bg-opacity-70 rounded-3xl p-8">
       <div class="h-10 w-[100%] flex justify-end items-center">
         <button onclick="showModal()" class="bg-black rounded-3xl text-[2vh] font-bold w-14 h-8 text-white">
           x
@@ -176,7 +130,7 @@
       </div>
       <div id="scrol"  class="md:flex gap-5">
         <div
-          class="bg-[url('/img/card.png')] bg-cover bg-center lg:w-[15vw] lg:h-[20vh] md:w-20 md:h-28 h-20 w-16 rounded-xl shadow-xl flex flex-col justify-around">
+          class="bg-[url('/img/card.png')] bg-cover bg-center lg:w-[7vw] lg:h-[20vh] md:w-20 md:h-28 h-20 w-16 rounded-xl shadow-xl flex flex-col justify-around">
           <button onclick="showModalPlayer()" class="w-full text-white font-bold h-full text-[3vh]">
             +
           </button>
@@ -195,7 +149,7 @@
       <div class="ml-11">
         <img class="w-24" src="./img/LOGO.png" alt="LOGO">
       </div>
-      <div class="lg:w-11 w-28 flex justify-around items-center lg:mr-11 mr-8">
+      <div class="lg:h-11 w-28 flex gap-6 justify-around items-center lg:mr-11 mr-8">
         <button
           class="lg:w-20 w-14 h-7 lg:h-10 bg-lime-500 rounded-xl text-white hover:border-solid hover:border-4 hover:border-lime-300 hover:bg-transparent hover:text-lime-300">
           Login
@@ -457,6 +411,8 @@
       </div>
     </div>
   </div>
+
+
   <script src="./tailwind.js"></script>
   <script src="./Foot.js"></script>
 </body>

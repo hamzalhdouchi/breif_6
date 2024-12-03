@@ -16,169 +16,148 @@ let Physical = document.getElementById("playerPhysical");
 
 
 cardsContainer.addEventListener("wheel", (e) => {
-    cardsContainer.scrollLeft += e.deltaX
+  cardsContainer.scrollLeft += e.deltaX
 })
+
+
 let arry = []
-
 function fetchData() {
+  fetch('./Player.json')
+    .then(response => response.json())
+    .then(data => {
+      const cards = data.players;
 
-    fetch('./Player.json')
-        .then(response => response.json())
-        .then(data => {
-            const cards = data.players;
-
-            arry = cards
-            console.log("vdfjhdvdhjvdvbjs", arry);
-            if (arry.length >= 0) {
-                localStorage.setItem("players", JSON.stringify(arry));
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        })
+      arry = cards
+      console.log("data fetch player", arry);
+        localStorage.setItem("players", JSON.stringify(arry));
+      
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    })
 }
 fetchData();
-
-
 function rigex() {
 
-    const NamePattern = /^[a-zA-Z\s]{3,30}$/;
-    const clubPattern = /^[a-zA-Z\s_-]{1,30}$/;
-    const ratingPattern = /^[0-9]{1,2}$/;
+  const NamePattern = /^[a-zA-Z\s]{3,30}$/;
+  const clubPattern = /^[a-zA-Z\s_-]{1,30}$/;
+  const ratingPattern = /^[0-9]{1,2}$/;
 
-    if (!NamePattern.test(Name.value)) {
-        alert("Le titre doit être entre 3 et 10 caractères, seulement des lettres.");
-        return false;
-    }
-
-    if (!clubPattern.test(club.value)) {
-        alert("La name de club doit être entre 10 et 100 caractères, avec seulement des lettres, chiffres, et ponctuations.");
-        return false;
-    }
-
-    if (!ratingPattern.test(rating.value) || !ratingPattern.test(pace.value) || !ratingPattern.test(shooting.value) || !ratingPattern.test(passing.value) || !ratingPattern.test(dribbling.value) || !ratingPattern.test(Defending.value) || !ratingPattern.test(Physical.value)) {
-        alert("Le rating doit être un nombre entre 0 et 99.");
-        return false;
-    }
-    return true;
-}
-
-function clearInput(){
-  Name.value =""
-  photo.value = ""
-  position.value = ""
-  club.value = ""
-  rating.value = ""
-  pace.value = ""
-  shooting.value = ""
-  passing.value = ""
-  dribbling.value = ""
-  Defending.value = ""
-  Physical.value = ""
-}
-
-function addPlayer() {
-    if (!rigex()) {
-        return;
-    }
-
-    let player = {
-        name: Name.value,
-        photo: photo.value,
-        position: position.value,
-        club: club.value,
-        rating: rating.value,
-        pace: pace.value,
-        shooting: shooting.value,
-        passing: passing.value,
-        dribbling: dribbling.value,
-        defending: Defending.value,
-        physical: Physical.value,
-    };
-
-    let arryPlayer = JSON.parse(localStorage.getItem("players"));
-    console.log(localStorage.getItem("players"));
-
-    arryPlayer.push(player);
-    localStorage.setItem("players", JSON.stringify(arryPlayer));
-
-    console.log(arry);
-
-    console.log("done:", player);
-
-    clearInput();
-}
-
-function changer_lesstats(position) {
-
-    if (position === "GK") {
-      let ratin = document.getElementsByClassName("pace")[0].innerText = "rating"
-      document.getElementsByClassName("shooting")[0].innerText = "diving"
-      document.getElementsByClassName("passing")[0].innerText = "handling"
-      document.getElementsByClassName("dribbling")[0].innerText = "kicking"
-      document.getElementsByClassName("defending")[0].innerText = "reflexes"
-      document.getElementsByClassName("physical")[0].innerText = "speed"
-  
-    } else {
-      document.getElementsByClassName("pace")[0].innerText = "pace"
-      document.getElementsByClassName("shooting")[0].innerText = "shooting"
-      document.getElementsByClassName("passing")[0].innerText = "passing"
-      document.getElementsByClassName("dribbling")[0].innerText = "dribbling"
-      document.getElementsByClassName("defending")[0].innerText = "defending"
-      document.getElementsByClassName("physical")[0].innerText = "physical"
-    }
-  
+  if (!NamePattern.test(Name.value)) {
+    alert("Le titre doit être entre 3 et 10 caractères, seulement des lettres.");
+    return false;
   }
+  if (!clubPattern.test(club.value)) {
+    alert("La name de club doit être entre 10 et 100 caractères, avec seulement des lettres, chiffres, et ponctuations.");
+    return false;
+  }
+
+  if (!ratingPattern.test(rating.value) || !ratingPattern.test(pace.value) || !ratingPattern.test(shooting.value) || !ratingPattern.test(passing.value) || !ratingPattern.test(dribbling.value) || !ratingPattern.test(Defending.value) || !ratingPattern.test(Physical.value)) {
+    alert("Le rating doit être un nombre entre 0 et 99.");
+    return false;
+  }
+  return true;
+}
+
+function clearInput() {
+  Name.value = "";
+  photo.value = "";
+  position.value = "";
+  club.value = "";
+  rating.value = "";
+  pace.value = "";
+  shooting.value = "";
+  passing.value = "";
+  dribbling.value = "";
+  Defending.value = "";
+  Physical.value = "";
+}
+
+function addPlayer(e) {
   
+  e.preventDefault();
+  if (!rigex()) {
+    return;
+  }
 
+  let player = {
+    name: Name.value,
+    photo: photo.value,
+    position: position.value,
+    club: club.value,
+    rating: rating.value,
+    pace: pace.value,
+    shooting: shooting.value,
+    passing: passing.value,
+    dribbling: dribbling.value,
+    defending: Defending.value,
+    physical: Physical.value,
+  };
 
-function showAlert(message) {
-    const alertBox = document.getElementById("alert-box");
-    const alertMessage = document.getElementById("alert-message");
+  let arryPlayer = JSON.parse(localStorage.getItem("players"));
 
-    alertMessage.textContent = message;
-    alertBox.classList.remove("hidden", "fade-out");
-    alertBox.classList.add("fade-in");
+  arryPlayer.push(player);
+  localStorage.setItem("players", JSON.stringify(arryPlayer));
 
-    setTimeout(() => {
-        alertBox.classList.remove("fade-in");
-        alertBox.classList.add("fade-out");
+  console.log("done:", player);
 
-        setTimeout(() => {
-            alertBox.classList.add("hidden");
-        }, 500);
-    }, 3000);
+  clearInput();
+}
+
+function changerForm(position) {
+
+  if (position === "GK") {
+    document.getElementsByClassName("pace")[0].innerText = "rating"
+    document.getElementsByClassName("shooting")[0].innerText = "diving"
+    document.getElementsByClassName("passing")[0].innerText = "handling"
+    document.getElementsByClassName("dribbling")[0].innerText = "kicking"
+    document.getElementsByClassName("defending")[0].innerText = "reflexes"
+    document.getElementsByClassName("physical")[0].innerText = "speed"
+
+  } else {
+    document.getElementsByClassName("pace")[0].innerText = "pace"
+    document.getElementsByClassName("shooting")[0].innerText = "shooting"
+    document.getElementsByClassName("passing")[0].innerText = "passing"
+    document.getElementsByClassName("dribbling")[0].innerText = "dribbling"
+    document.getElementsByClassName("defending")[0].innerText = "defending"
+    document.getElementsByClassName("physical")[0].innerText = "physical"
+  }
+
 }
 
 function showModal(post) {
 
+  //afficher les player sur popup
+  modal.classList.toggle("hidden");
 
-    modal.classList.toggle("hidden");
-    const storedPlayers = localStorage.getItem("players");
-    let arryPlayer = JSON.parse(storedPlayers) || [];
+  //extract les players localstorage
+  const storedPlayers = localStorage.getItem("players");
+  let arryPlayer = JSON.parse(storedPlayers) || [];
 
-    let feltredArry = arryPlayer.filter(player => player.position == post);
-    cardsContainer.innerHTML = '';
+  //filter les playres pour chaque position
+  let feltredArry = arryPlayer.filter(player => player.position == post);
 
-    if (post == 'GK' || post == 'RB' || post == 'CBR' || post == 'CBL' || post == 'LB' || post == 'CM' || post == 'CMD' || post == 'CM2' || post == 'RW' || post == 'ST' || post == 'LW') {
-        feltredArry.forEach(player => {
-            const playerCard = document.createElement('div');
-            playerCard.classList.add('bg-[url(\'/img/card.png\')]', 'bg-cover', 'bg-center', 'min-w-[120px]', 'h-[20vh]', 'h-20', 'rounded-xl', 'shadow-xl', 'flex', 'flex-col', 'justify-around');
+  //clear popup filter 
+  cardsContainer.innerHTML = '';
 
-            playerCard.innerHTML = `<div class="text-center mt-">
-            <span class="block font-extrabold text-white mt-2 text-[10px]">${player.rating}</span>
-            <h3 class="text-white font-bold text-[10px] mt-1">${player.name}</h3>
-            <p class=" text-gray-300 font-medium text-[8px]">${player.club}</p>
+  if (post == 'GK' || post == 'RB' || post == 'CBR' || post == 'CBL' || post == 'LB' || post == 'CM' || post == 'CMD' || post == 'CM2' || post == 'RW' || post == 'ST' || post == 'LW') {
+    feltredArry.forEach(player => {
+      const playerCard = document.createElement('div');
+      playerCard.classList.add('bg-[url(\'/img/card.png\')]', 'bg-cover', 'bg-center','lg:w-[7vw]', 'lg:h-[20vh]', 'md:w-20', 'md:h-28', 'w-16',  'h-24', 'rounded-xl', 'shadow-xl', 'flex', 'flex-col', 'justify-around');
+
+      playerCard.innerHTML = `<div class="text-center mt-">
+            <span class="block font-extrabold text-white  mt-2 lg:text-[10px] md:text-[8px] text-[6px]">${player.rating}</span>
+            <h3 class="text-white font-bold md:text-[10px] lg:mt-1 text-[6px]">${player.name}</h3>
+            <p class=" text-gray-300 font-medium md:text-[8px] text-[5px]">${player.club}</p>
         </div>
-        <div class=">
-           
+        <div class=">         
         </div>
         </div>
                     <div class="absolute w-28 h-36 z-30 text-white flex justify-center items-center w-full flex justify-center">
-                    <button onclick="AjouterPlayer('${player.name}', '${player.position}','${post}')" class="w-full h-full flex justify-center"> <img class="h-[8vh] rounded-b-full pb-1" src="${player.photo}" alt=""></button>
+                    <button onclick="AjouterPlayer('${player.name}', '${player.position}','${post}')" class="w-full h-full flex justify-center"> <img class="lg:h-[8vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt=""></button>
                     </div>
         <div class=" from-transparent  rounded-b-xl text-white flex justify-center">
-            <div class="flex gap-2 justify-around font-semibold w-28 h-10 text-[7px] mb-10">
+            <div class="flex gap-2 justify-around font-semibold w-20 h-10 lg:text-[7px] hover:text-[7px] text-[4px] mb-10">
             <div class="text-left">
                 <p> ${player.pace}PAC</p>
                 <p> ${player.shooting}SHO</p>
@@ -193,21 +172,21 @@ function showModal(post) {
         </div>
         </div> 
                     `;
-            if (post === "GK") {
-                playerCard.innerHTML = `
+      if (post === "GK") {
+        playerCard.innerHTML = `
                     <div class="text-center mt-">
-                        <span class="block font-extrabold text-white mt-2 text-[10px]">${player.rating}</span>
-                        <h3 class="text-white font-bold text-[10px] mt-1">${player.name}</h3>
-                        <p class=" text-gray-300 font-medium text-[8px]">${player.club}</p>
+                        <span class="block font-extrabold text-white lg:mt-2 text-[5px] lg:text-[10px]">${player.rating}</span>
+                        <h3 class="text-white font-bold md:text-[10px] lg:mt-1 text-[6px]">${player.name}</h3>
+                        <p class=" text-gray-300 font-medium md:text-[8px] text-[5px]">${player.club}</p>
                     </div>
                     <div class="w-full flex justify-center">
-                        <img class="h-[8vh] rounded-b-full pb-1" src="${player.photo}" alt="">
+                        <img class="lg:h-[8vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt="">
                     </div>
                     <div class="absolute w-28 h-36 z-30 text-white flex justify-center items-center">
                     <button onclick="AjouterPlayer('${player.name}', '${player.position}','${post}')" class="w-full h-full"></button>
                     </div>
                     <div class=" from-transparent  rounded-b-xl text-white flex justify-center">
-                        <div class="flex gap-2 justify-around font-semibold w-20 h-10 text-[8px] mb-10">
+                        <div class="flex gap-2 justify-around font-semibold  w-20 h-10 lg:text-[7px] hover:text-[7px] text-[4px] mb-10">
                         <div class="text-left">
                             <p> ${player.diving}DIV</p>
                             <p> ${player.handling}HND</p>
@@ -222,29 +201,27 @@ function showModal(post) {
                     </div>
                     </div>
                                 `;
+      }
+      cardsContainer.appendChild(playerCard);
+    });
+  } else {
+    arryPlayer.forEach(player => {
+      const playerCard = document.createElement('div');
+      playerCard.classList.add('bg-[url(\'/img/card.png\')]', 'bg-cover', 'bg-center', 'lg:h-[20vh]', 'md:w-20', 'md:h-28', 'h-20', 'w-16', 'rounded-xl', 'shadow-xl', 'flex', 'flex-col', 'justify-between');
 
-            }
-            cardsContainer.appendChild(playerCard);
-
-        });
-    } else {
-        arryPlayer.forEach(player => {
-            const playerCard = document.createElement('div');
-            playerCard.classList.add('bg-[url(\'/img/card.png\')]', 'bg-cover', 'bg-center', 'h-[20vh]', 'rounded-xl', 'shadow-xl', 'flex', 'flex-col', 'justify-between');
-
-            playerCard.innerHTML = `
+      playerCard.innerHTML = `
         <div class="text-center mt-">
-            <span class="block font-extrabold text-white mt-2 text-[10px]">${player.rating}</span>
-            <h3 class="text-white font-bold text-[10px] mt-1">${player.name}</h3>
-            <p class=" text-gray-300 font-medium text-[8px]">${player.club}</p>
+            <span class="block font-extrabold text-white mt-2 lg:text-[10px] text-[5px]">${player.rating}</span>
+            <h3 class="text-white font-bold md:text-[10px] lg:mt-1 text-[6px]">${player.name}</h3>
+            <p class=" text-gray-300 font-medium md:text-[8px] text-[5px]">${player.club}</p>
         </div>
 
         </div>
                     <div class=" w-28 h-[7vh] z-30 text-white flex justify-center items-center">
-                    <button onclick="AjouterPlayer('${player.name}', '${player.position}R','${post}')" class="h-full w-[7vw] w-full flex justify-center"><img class="h-[7vh] rounded-b-full pb-1" src="${player.photo}" alt=""></button>
+                    <button onclick="AjouterPlayer('${player.name}', '${player.position}R','${post}')" class="h-full w-[7vw] w-full flex justify-center"><img class="lg:h-[8vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt=""></button>
                     </div>
         <div class=" from-transparent  rounded-b-xl text-white flex justify-center">
-            <div class="flex gap-2 justify-around font-semibold w-28 h-10 text-[9px] mb-10">
+            <div class="flex gap-2 justify-around font-semibold w-20 h-10 lg:text-[7px] hover:text-[7px] text-[4px] mb-10">
             <div class="text-left">
                 <p> ${player.pace}PAC</p>
                 <p> ${player.shooting}SHO</p>
@@ -259,21 +236,21 @@ function showModal(post) {
         </div>
         </div>
                     `;
-            if (post === "GK" || post === "GKR") {
-                playerCard.innerHTML = `
+      if (post === "GKR") {
+        playerCard.innerHTML = `
                     <div class="text-center mt-">
-                        <span class="block font-extrabold text-white mt-2 text-[10px]">${player.rating}</span>
-                        <h3 class="text-white font-bold text-[10px] mt-1">${player.name}</h3>
-                        <p class=" text-gray-300 font-medium text-[8px]">${player.club}</p>
+                        <span class="block font-extrabold text-white  mt-2 lg:text-[10px] text-[5px]">${player.rating}</span>
+                        <h3 class="text-white font-bold md:text-[10px] lg:mt-1 text-[6px]  ">${player.name}</h3>
+                        <p class=" text-gray-300 font-medium md:text-[8px] text-[5px]">${player.club}</p>
                     </div>
                     <div class="w-full flex justify-center">
-                        <img class="h-[8vh] rounded-b-full pb-1" src="${player.photo}" alt="">
+                        <img class="lg:h-[8vh] h-[3vh] rounded-b-full pb-1" src="${player.photo}" alt="">
                     </div>
                     <div class="absolute w-28 h-36 z-30 text-white flex justify-center items-center">
                     <button onclick="AjouterPlayer('${player.name}', '${player.position}','${post}')" class="w-full h-full"></button>
                     </div>
                     <div class=" from-transparent  rounded-b-xl text-white flex justify-center">
-                        <div class="flex gap-2 justify-around font-semibold w-20 h-10 text-[8px] mb-10">
+                        <div class="flex gap-2 justify-around font-semibold  w-20 h-10 lg:text-[7px] hover:text-[7px] text-[4px] mb-10">
                         <div class="text-left">
                             <p> ${player.diving}DIV</p>
                             <p> ${player.handling}HND</p>
@@ -289,35 +266,31 @@ function showModal(post) {
                     </div>
                   
                                 `;
-            }
-            cardsContainer.appendChild(playerCard);
-
-        });
-    }
-
-
+      }
+      cardsContainer.appendChild(playerCard);
+    });
+  }
 }
 
-
 function AjouterPlayer(playerName, selected, post) {
+  
+  //div cards id position
+  const cardElement = document.getElementById(selected);
 
+  const storedPlayers = localStorage.getItem("players");
+  let arryPlayer = JSON.parse(storedPlayers) || [];
 
-    console.log("test :", playerName, selected, post);
-    const cardElement = document.getElementById(selected);
-
-
-
-    const storedPlayers = localStorage.getItem("players");
-    let arryPlayer = JSON.parse(storedPlayers) || [];
-    const player = arryPlayer.find(player => player.name === playerName);
-    if (!player) {
-        console.error('Player not found');
-        return;
-    }
-    if (cardElement) {
-        cardElement.innerHTML = `
+  const player = arryPlayer.find(player => player.name === playerName);
+  
+  if (!player) {
+    alert('Player not found');
+    return;
+  }
+  
+  if (cardElement) {
+    cardElement.innerHTML = `
               <div class="flex flex-col items-center gap-1">
-    <div class="relative bg-[url('/img/card.png')] bg-cover bg-center lg:w-[7vw] lg:h-[20vh] md:w-20 md:h-28 h-20 w-16 rounded-xl shadow-xl flex flex-col justify-around group">
+    <div class="relative bg-[url('/img/card.png')] bg-cover bg-center lg:w-[7vw] lg:h-[20vh] md:w-20 md:h-28 h-24 w-18 rounded-xl shadow-xl flex flex-col justify-around group">
       <div class="text-center mt-">
         <span class="block font-extrabold text-white mt-2 lg:text-[10px] md:text-[8px] text-[6px]">${player.rating}</span>
         <h3 class="text-white font-bold md:text-[10px] text-[6px]  mt-1">${player.name}</h3>
@@ -353,12 +326,11 @@ function AjouterPlayer(playerName, selected, post) {
       </div>
     </div>
   </div>
-  
                 `;
-        if (post === "GK") {
-            cardElement.innerHTML = `
+    if (post === "GK") {
+      cardElement.innerHTML = `
                   <div class="flex flex-col items-center gap-1">
-    <div class="relative bg-[url('/img/card.png')] bg-cover bg-center lg:w-[7vw] lg:h-[20vh] md:w-20 md:h-28 h-20 w-16 rounded-xl shadow-xl flex flex-col justify-around group">
+    <div class="relative bg-[url('/img/card.png')] bg-cover bg-center hover:w-[40px] lg:w-[7vw] lg:h-[20vh] md:w-20 md:h-28 h-20 w-16 rounded-xl shadow-xl flex flex-col justify-around group">
       <div class="text-center mt-">
         <span class="block font-extrabold text-white mt-2 lg:text-[10px] md:text-[8px] text-[6px]">${player.rating}</span>
         <h3 class="text-white font-bold md:text-[10px] text-[6px] mt-1">${player.name}</h3>
@@ -393,25 +365,20 @@ function AjouterPlayer(playerName, selected, post) {
   </div>
   
                         `;
-        }
     }
-
-    modal.classList.toggle("hidden");
-
-
+  }
+  modal.classList.toggle("hidden");
 }
 
-
-
 function showModalPlayer() {
-    modalPlayer.classList.toggle("hidden");
+  modalPlayer.classList.toggle("hidden");
 }
 
 function suprim(playerName, post) {
-    let posistion = document.getElementById(post);
-    posistion.innerHTML = `
+  let posistion = document.getElementById(post);
+  posistion.innerHTML = `
     <div
-    class="bg-[url('/img/card.png')] bg-cover bg-center w-[7vw] h-[20vh] rounded-xl shadow-xl flex flex-col justify-around">
+    class="bg-[url('/img/card.png')] bg-cover bg-center lg:w-[7vw] lg:h-[20vh] md:w-20 md:h-28 h-20 w-16 rounded-xl shadow-xl flex flex-col justify-around">
     <button onclick="showModal('${post}')" class="w-full text-white font-bold h-full text-[3vh]">
       +
     </button>
@@ -421,44 +388,40 @@ function suprim(playerName, post) {
     value="${post}">
     ${post}
   </div>`;
-    const data = localStorage.getItem("players");
-    let arrayData = [];
-    if (data) {
-        arrayData = JSON.parse(data);
-    }
+  
+  const data = localStorage.getItem("players");
+  let arrayData = [];
+  
+  if (data) {
+    arrayData = JSON.parse(data);
+  }
 
 
-    arrayData = arrayData.filter(players => players.name !== playerName);
-    console.log(arrayData);
-    localStorage.setItem("players", JSON.stringify(arrayData));
+  arrayData = arrayData.filter(players => players.name !== playerName);
+
+  localStorage.setItem("players", JSON.stringify(arrayData));
 
 }
-
-
-
-
-;
-
 
 function RemplacePlayer(post, playerName) {
 
+  PlayerPost = post.slice(0, -1);
 
-    PlayerPost = post.slice(0, -1);
-
-    //player list str
-    let element = document.getElementById(post);
-    //player match st
-    let element2 = document.getElementById(PlayerPost);
-    let playerName2Text = document.getElementById(PlayerPost).querySelector('h3').textContent;
+  //player list str
+  let element = document.getElementById(post);
+  //player match st
+  let element2 = document.getElementById(PlayerPost);
+  let playerName2Text = document.getElementById(PlayerPost).querySelector('h3').textContent;
 
 
-    console.log("player post :", PlayerPost);
-    console.log("post  :", post);
+  console.log("player post :", PlayerPost);
+  console.log("post  :", post);
 
-    element.setAttribute("id", PlayerPost);
-    element2.setAttribute("id", post);
-    AjouterPlayer(playerName, post, post);
+  element.setAttribute("id", PlayerPost);
+  element2.setAttribute("id", post);
+  AjouterPlayer(playerName, post, post);
 
-    AjouterPlayer(playerName2Text, PlayerPost, PlayerPost);
+  AjouterPlayer(playerName2Text, PlayerPost, PlayerPost);
 
 }
+
